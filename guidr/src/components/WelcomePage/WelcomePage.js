@@ -11,8 +11,8 @@ const WelcomePage = () => {
         <h1>guidr</h1>
       </div>  
       <h2>Your adventure awaits.</h2>
-      <div className="button register">Register</div>
-      <div className="button log-in">Log In</div>
+      <button className="button register">Register</button>
+      <button className="button log-in">Log In</button>
     </div>
   )
 }
