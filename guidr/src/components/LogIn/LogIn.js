@@ -25,11 +25,7 @@ class LogIn extends Component {
       }
       logIn = e => {
           e.preventDefault()
-          //this.props.history.push('/my-trips')
           this.props.loginUser(this.state)
-        //   if (this.props.isUserLoggedIn) {
-        //       this.props.history.push('/my-trips')
-        //   }
       }
   render() {
     return (

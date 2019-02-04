@@ -2,7 +2,7 @@ import {REGISTER_NEW_USER, LOGIN_USER, LOGIN_SUCCESS} from '../actions/index'
 
 const initialState = {
     isUserLoggedIn: false,
-    users: []
+    loggedInUser: {}
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -10,7 +10,8 @@ const rootReducer = (state = initialState, action) => {
         case LOGIN_SUCCESS:
             return {
                 ...state,
-                isUserLoggedIn: true
+                isUserLoggedIn: true,
+                loggedInUser: action.payload.user
             }
         default:
             return state
