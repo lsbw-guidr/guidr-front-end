@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         
-        <Route path="/welcome" render={props => <WelcomePage {...props} />} />
+        <Route exact path="/" render={props => <WelcomePage {...props} />} />
         <Route path="/register" render={props => <Register {...props} />}/>
         <Route path="/login" render={props => <LogIn {...props} />}/>
         <Route path="/my-trips" render={props => <TripList {...props} />}/>

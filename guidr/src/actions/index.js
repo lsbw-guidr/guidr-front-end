@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+
 export const LOGIN_USER = 'LOGIN_USER'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
@@ -12,7 +14,12 @@ export const registerNewUser = (state) => dispatch => {
         .post('https://guidr-api.herokuapp.com/auth/register', state)
         .then(res => {
             console.log(res)
-            localStorage.setItem("registerToken", `${res.data.token}`)
+            localStorage.setItem("loginToken", `${res.data.token}`)
+            localStorage.setItem("userId", `${res.data.user.id}`)
+            dispatch({
+                type: REGISTER_SUCCESS,
+                payload: res.data
+            })
         })
         .catch(error => {
             console.log(error)
@@ -25,6 +32,7 @@ export const loginUser = (state) => dispatch => {
         .then(res => {
             console.log(res)
             localStorage.setItem("loginToken", `${res.data.token}`)
+            localStorage.setItem("userId", `${res.data.user.id}`)
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data
@@ -43,9 +51,13 @@ export const getTrips = id => dispatch => {
     }
     dispatch({type: FETCHING_TRIPS})
     axios
-        .get(`https://guidr-api.herokuapp.com/user/${id}/all`, options)
+        .get(`https://guidr-api.herokuapp.com/user/trips/${id}/all`, options)
         .then(res => {
             console.log(res)
+            dispatch({
+                type: FETCH_TRIPS_SUCCESS,
+                payload: res.data
+            })
         })
         .catch(err => {
             console.log(err)
