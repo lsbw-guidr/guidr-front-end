@@ -1,0 +1,13 @@
+@import '../../Main-Styles/Variables.scss';
+
+.welcome-page {
+    .header-container {
+        display: flex;
+        align-items: center;
+        font-family: $logo-font;
+        h1 {
+            font-size: 8rem;
+        }
+    }
+    font-family: $text-font;
+}
