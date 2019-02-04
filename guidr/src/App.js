@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Route } from 'react-router-dom'
+
 import './Main-Styles/App.scss';
 import WelcomePage from './components/WelcomePage/WelcomePage'
 
@@ -8,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         
-        <WelcomePage />
+        <Route path="/welcome" render={props => <WelcomePage {...props} />} />
       </div>
     );
   }

@@ -1,13 +1,42 @@
 @import '../../Main-Styles/Variables.scss';
 
 .welcome-page {
+    width: 500px;
+    margin: auto;
     .header-container {
         display: flex;
         align-items: center;
+        justify-content: center;
         font-family: $logo-font;
         h1 {
             font-size: 8rem;
         }
-    }
+    }//header-container
     font-family: $text-font;
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .button {
+        font-size: 2rem;
+        text-align: center;
+        width: 300px;
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 7px;
+        &:active {
+            transform: scale(0.99)
+        }
+    }
+    .register {
+        border: 2px solid #BA4000;
+        background-color: #BA4000;
+        color: white;
+    }
+    .log-in {
+        border: 2px solid #BA4000;
+        color: #BA4000;
+        background-color: white;
+    }
+
 }
