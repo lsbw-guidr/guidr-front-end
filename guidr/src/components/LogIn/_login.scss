@@ -1,0 +1,55 @@
+@import '../../Main-Styles/Variables.scss';
+.login {
+    font-family: $text-font;
+    width: 400px;
+    margin: auto;
+    border: 1px solid #E6E6E6;
+    border-radius: 3px;
+    background-color: white;
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $logo-font;
+        h1 {
+            font-size: 8rem;
+        }
+    }//header-container
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        label {
+            padding: 10px;
+            width: 300px;
+            margin: auto;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: auto;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #E6E6E6;
+        }
+        .button {
+            font-size: 2rem;
+            text-align: center;
+            width: 300px;
+            margin: auto;
+            margin-bottom: 20px;
+            padding: 7px;
+            &:active {
+                transform: scale(0.99)
+            }
+        }
+        .register {
+            border: 2px solid #BA4000;
+            background-color: #BA4000;
+            color: white;
+        }// FORM
+    }
+
+}

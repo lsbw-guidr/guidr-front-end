@@ -18,10 +18,11 @@
         text-align: center;
     }
     .button {
+        display: block;
         font-size: 2rem;
         text-align: center;
         width: 300px;
-        margin: auto;
+        margin: 0 auto ;
         margin-bottom: 20px;
         padding: 7px;
         &:active {

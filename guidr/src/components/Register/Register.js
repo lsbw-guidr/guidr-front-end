@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
 import './_register.scss'
-export default class Register extends Component {
+
+import { connect } from 'react-redux'
+
+import { registerNewUser } from '../../actions/index'
+class Register extends Component {
   state = {
     name: '',
     username: '',
@@ -11,6 +15,8 @@ export default class Register extends Component {
   }
     register = (e) => {
         e.preventDefault()
+        this.props.registerNewUser(this.state)
+        // this.props.history.push(/)
     }
     handleChanges = e => {
       e.preventDefault()
@@ -43,3 +49,9 @@ export default class Register extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  
+})
+
+export default connect(null, { registerNewUser })(Register)

@@ -1,7 +1,10 @@
+import {REGISTER_NEW_USER} from '../actions/index'
+
 const initialState = {}
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+        
         default:
             return state
     }

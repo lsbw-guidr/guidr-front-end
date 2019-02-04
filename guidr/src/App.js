@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import './Main-Styles/App.scss';
 import WelcomePage from './components/WelcomePage/WelcomePage'
 import Register from './components/Register/Register'
+import LogIn from './components/LogIn/LogIn'
 class App extends Component {
   render() {
     return (
@@ -12,6 +13,7 @@ class App extends Component {
         
         <Route path="/welcome" render={props => <WelcomePage {...props} />} />
         <Route path="/register" render={props => <Register {...props} />}/>
+        <Route path="/login" render={props => <LogIn {...props} />}/>
       </div>
     );
   }
