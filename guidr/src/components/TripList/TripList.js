@@ -3,6 +3,8 @@ import './_triplist.scss'
 
 import { connect } from 'react-redux'
 import { loginUser, getTrips } from '../../actions/index'
+
+import TripWidget from '../TripWidget/TripWidget'
 class TripList extends React.Component {
   componentDidMount() {
     // console.log(this.props.loggedInUser.id)
@@ -15,7 +17,7 @@ class TripList extends React.Component {
     <div>
       {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>YOU MORON</h1>}
       {this.props.tripList.map(trip => {
-        return <p>{trip.title}</p>
+        return <TripWidget key={trip.id} trip={trip} />
       })}
     </div>
   )
