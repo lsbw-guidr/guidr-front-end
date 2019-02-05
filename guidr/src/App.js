@@ -9,6 +9,7 @@ import './Main-Styles/App.scss';
 import WelcomePage from './components/WelcomePage/WelcomePage'
 import Register from './components/Register/Register'
 import LogIn from './components/LogIn/LogIn'
+import UserProfile from './components/UserProfile/UserProfile'
 import TripList from './components/TripList/TripList'
 class App extends Component {
   componentWillReceiveProps(newProps) {
@@ -21,7 +22,8 @@ class App extends Component {
         <Route exact path="/" render={props => <WelcomePage {...props} />} />
         <Route path="/register" render={props => <Register {...props} />}/>
         <Route path="/login" render={props => <LogIn {...props} />}/>
-        <Route path="/my-trips" render={props => <TripList {...props} />}/>
+        {/* <Route path="/my-profile" render={props => <TripList {...props} />}/> */}
+        <Route path="/:username/profile/my-trips" render={props => <UserProfile {...props} />} />
       </div>
     );
   }

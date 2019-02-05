@@ -13,7 +13,7 @@ class LogIn extends Component {
     }
     componentWillReceiveProps(newProps) {
         if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
-            this.props.history.push('/my-trips')
+            this.props.history.push('/my-profile')
         }
     }
     handleChanges = e => {
@@ -48,6 +48,8 @@ class LogIn extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn
+    userInfo: state.userInfo,
+    loggedInUser: state.loggedInUser,
+    isUserLoggedIn: state.isUserLoggedIn
 })
 export default connect(mapStateToProps, { loginUser })(LogIn)
