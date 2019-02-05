@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
-import { loginUser } from '../../actions/index'
+import { loginUser, getTrips, getUserInfo } from '../../actions/index'
 import './_login.scss'
 class LogIn extends Component {
     state = {
@@ -12,8 +12,8 @@ class LogIn extends Component {
         console.log(this.props)
     }
     componentWillReceiveProps(newProps) {
-        if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
-            this.props.history.push('/my-profile')
+        if (newProps.userInfo !== this.props.userInfo) {
+            this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
         }
     }
     handleChanges = e => {
@@ -26,6 +26,8 @@ class LogIn extends Component {
       logIn = e => {
           e.preventDefault()
           this.props.loginUser(this.state)
+          const id = localStorage.getItem('userId')
+          this.props.getUserInfo(id)
       }
   render() {
     return (
@@ -37,9 +39,9 @@ class LogIn extends Component {
                 <h1>{this.props.isUserLoggedIn}</h1>
             </div>
             <form>
-                <input type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges}/>
+                <input required type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges}/>
                 
-                <input type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges}/>
+                <input required type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges}/>
                 <button className="button register" onClick={this.logIn}>Log In</button>
             </form>
         </div>
@@ -48,8 +50,9 @@ class LogIn extends Component {
   }
 }
 const mapStateToProps = state => ({
-    userInfo: state.userInfo,
+    isUserLoggedIn: state.isUserLoggedIn,
     loggedInUser: state.loggedInUser,
-    isUserLoggedIn: state.isUserLoggedIn
-})
-export default connect(mapStateToProps, { loginUser })(LogIn)
+    tripList: state.tripList,
+    userInfo: state.userInfo
+  })
+export default connect(mapStateToProps, { loginUser, getTrips, getUserInfo })(LogIn)
