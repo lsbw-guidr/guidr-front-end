@@ -7,10 +7,22 @@ import { loginUser, getTrips, getUserInfo } from '../../actions/index'
 import TripList from '../TripList/TripList'
 import AddTripForm from '../AddTripForm/AddTripForm'
 class UserProfile extends Component {
+  componentDidMount() {
+    const id = localStorage.getItem('userId')
+    this.props.getTrips(id)
+    this.props.getUserInfo(id)
+  }
   render() {
     return (
       <div>
+        {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>}
         {/* USER PROFILE INFO */}
+        <div className="profile-card">
+          <h2>{this.props.userInfo.name}</h2>
+          <p>Career Length: {this.props.userInfo.careerLength}</p>
+          <p>{this.props.userInfo.tagline}</p>
+          <p>{this.props.tripList.length} trips taken</p>
+        </div>
         {/* NAV LINKS, ONE TO THE TRIP LIST (DEFAULT) AND THE OTHER TO ADD TRIP FORM  */}
         <div>
             <Link to={`/${this.props.userInfo.username}/profile/my-trips`}>My Trips</Link>
@@ -30,4 +42,4 @@ const mapStateToProps = state => ({
     userInfo: state.userInfo
   })
 
-export default connect(mapStateToProps, {})(UserProfile)
+export default connect(mapStateToProps, {loginUser, getTrips, getUserInfo})(UserProfile)

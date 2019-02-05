@@ -16,8 +16,6 @@ class TripList extends React.Component {
   render() {
     return (
     <div>
-      {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>YOU MORON</h1>}
-      <p>{this.props.userInfo.name}</p>
       {this.props.tripList.map(trip => {
         return <TripWidget key={trip.id} trip={trip} />
       })}
