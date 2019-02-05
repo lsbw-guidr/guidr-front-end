@@ -5,7 +5,9 @@ import {REGISTER_NEW_USER,
     FETCHING_TRIPS,
     FETCH_TRIPS_SUCCESS,
     FETCHING_USER_INFO,
-    FETCH_USER_SUCCESS
+    FETCH_USER_SUCCESS,
+    ADDING_NEW_TRIP,
+    ADD_TRIP_SUCCESS
 } from '../actions/index'
 
 const initialState = {

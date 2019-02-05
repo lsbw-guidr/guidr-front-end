@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
+
+import { addNewTrip } from '../../actions/index'
 class AddTripForm extends Component {
   state = {
     description: "",
@@ -16,6 +18,11 @@ class AddTripForm extends Component {
     this.setState({
       [name]: value
     })
+  }
+  addNewTrip = e => {
+    e.preventDefault()
+    this.props.addNewTrip(this.props.loggedInUser.id, this.state)
+    this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
   }
   render() {
     return (
@@ -35,21 +42,21 @@ class AddTripForm extends Component {
               <input 
                   type="radio" 
                   name="designation"
-                  value="public"
-                  checked={this.state.designation === "public"}
+                  value="Professional"
+                  checked={this.state.designation === "Professional"}
                   onChange={this.handleChange}
               />
-              <label>Public</label>
+              <label>Professional</label>
             
               <input 
                   type="radio" 
                   name="designation"
-                  value="private"
-                  checked={this.state.designation === "private"}
+                  value="Private"
+                  checked={this.state.designation === "Private"}
                   onChange={this.handleChange}
               />
               <label>Private</label>
-            <button>Add Trip</button>
+            <button onClick={this.addNewTrip}>Add Trip</button>
         </form>
       </div>
     )
@@ -61,4 +68,4 @@ const mapStateToProps = state => ({
     tripList: state.tripList,
     userInfo: state.userInfo
   })
-  export default connect(mapStateToProps, {  })(AddTripForm)
+  export default connect(mapStateToProps, { addNewTrip })(AddTripForm)

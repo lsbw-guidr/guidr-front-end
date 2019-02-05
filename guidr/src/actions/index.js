@@ -11,6 +11,10 @@ export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS'
 
 export const FETCHING_TRIPS = 'FETCHING_TRIPS'
 export const FETCH_TRIPS_SUCCESS = 'FETCH_TRIPS_SUCCESS'
+
+export const ADDING_NEW_TRIP = 'ADDING_NEW_TRIP'
+export const ADD_TRIP_SUCCESS = 'ADD_TRIP_SUCCESS'
+
 export const registerNewUser = (state) => dispatch => {
     dispatch({type: REGISTER_NEW_USER})
     axios
@@ -87,4 +91,26 @@ export const getUserInfo = id => dispatch => {
             console.log(err)
         })
     
+}
+
+export const addNewTrip = (userId, state) => dispatch => {
+    const token = localStorage.getItem('loginToken')
+    const options = {
+        headers: {
+            Authorization: token,
+        }
+    }
+    dispatch({type: ADDING_NEW_TRIP})
+    axios
+        .post(`https://guidr-api.herokuapp.com/user/trips/${userId}/create`, state, options)
+        .then(res => {
+            console.log(res)
+            dispatch({
+                type: ADD_TRIP_SUCCESS,
+                payload: res.data
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
 }
