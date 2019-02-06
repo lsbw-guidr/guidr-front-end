@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import { deleteTrip } from '../../actions/index'
 class TripPage extends Component {
     state = {
         tripList: [],
@@ -21,21 +22,35 @@ class TripPage extends Component {
         trip: trip
     })
     }
-    
+    deleteTrip = e => {
+        e.preventDefault()
+        this.props.deleteTrip(this.state.trip.id)
+        this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
+    }
   render() {
-      if(localStorage.getItem('userId') === null ) {
+      if(this.props.isUserLoggedIn === false) {
           return <h1>PLEASE LOG IN</h1>
       }
     return (
       <div>
         <h1>WELCOME TO THE TRIP PAGE</h1>
-        <p>{this.state.trip.title}</p>
+        <h1>{this.state.trip.title}</h1>
+        <p>{this.state.trip.description}</p>
+        <div className="trip-page-img-container">
+            <img src={this.state.trip.img_url} alt={this.state.trip.description} />
+        </div>
+        <div className="button-container">
+            <button>Update Trip</button> 
+            <button onClick={this.deleteTrip}>Delete Trip</button>
+        </div>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-    tripList: state.tripList
+    userInfo: state.userInfo,
+    tripList: state.tripList,
+    isUserLoggedIn: state.isUserLoggedIn
 })
-export default connect(mapStateToProps, {} )(TripPage)
+export default connect(mapStateToProps, { deleteTrip } )(TripPage)

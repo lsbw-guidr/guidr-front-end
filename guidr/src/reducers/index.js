@@ -7,7 +7,9 @@ import {REGISTER_NEW_USER,
     FETCHING_USER_INFO,
     FETCH_USER_SUCCESS,
     ADDING_NEW_TRIP,
-    ADD_TRIP_SUCCESS
+    ADD_TRIP_SUCCESS,
+    DELETING_TRIP,
+    DELETE_TRIP_SUCCESS
 } from '../actions/index'
 
 const initialState = {
@@ -42,6 +44,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userInfo: action.payload
+            }
+        case DELETE_TRIP_SUCCESS:
+            return {
+                ...state,
+                tripList: action.payload
             }
         default:
             return state
