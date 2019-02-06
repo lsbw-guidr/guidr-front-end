@@ -9,7 +9,9 @@ import {REGISTER_NEW_USER,
     ADDING_NEW_TRIP,
     ADD_TRIP_SUCCESS,
     DELETING_TRIP,
-    DELETE_TRIP_SUCCESS
+    DELETE_TRIP_SUCCESS,
+    UPDATING_TRIP,
+    UPDATE_TRIP_SUCCESS
 } from '../actions/index'
 
 const initialState = {

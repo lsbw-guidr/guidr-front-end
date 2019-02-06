@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { deleteTrip } from '../../actions/index'
+import { deleteTrip, updateTrip } from '../../actions/index'
 class TripPage extends Component {
     state = {
         tripList: [],
-        trip: {}
+        trip: {},
+        isTripUpdating: false
     }
     componentDidMount() {
         this.setState({
@@ -17,19 +18,52 @@ class TripPage extends Component {
     retrieveTrip = () => {
         const trip = this.state.tripList.find(
             trip => `${trip.id}` === this.props.match.params.id
-    )
-    this.setState({
-        trip: trip
-    })
+        )
+        this.setState({
+            trip: trip
+        })
     }
+
+    handleChanges = e => {
+        this.setState({
+           trip: {
+              ...this.state.trip,
+              [e.target.name] : e.target.value
+           }
+        })
+     }
     deleteTrip = e => {
         e.preventDefault()
         this.props.deleteTrip(this.state.trip.id)
         this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
     }
+    toggleUpdating = e => {
+        e.preventDefault()
+        this.setState(prevState => {
+            return {
+                isTripUpdating: !prevState.isTripUpdating
+            }
+        })
+    }
+    saveUpdates = e => {
+        e.preventDefault()
+        this.props.updateTrip(this.props.loggedInUser.id, this.state.trip.id, this.state.trip)
+        this.setState({
+            isTripUpdating: false
+        })
+    }
   render() {
       if(this.props.isUserLoggedIn === false) {
           return <h1>PLEASE LOG IN</h1>
+      }
+      if(this.state.isTripUpdating) {
+          return (
+              <div>
+                  <input type="text" name="title" value={this.state.trip.title} onChange={this.handleChanges}/>
+                  <input type="text" name="description" value={this.state.trip.description} onChange={this.handleChanges}/>
+                  <button onClick={this.saveUpdates}>Save Updates</button>
+              </div>
+          )
       }
     return (
       <div>
@@ -40,7 +74,7 @@ class TripPage extends Component {
             <img src={this.state.trip.img_url} alt={this.state.trip.description} />
         </div>
         <div className="button-container">
-            <button>Update Trip</button> 
+            {!this.state.isTripUpdating && <button onClick={this.toggleUpdating}>Update Trip</button>} 
             <button onClick={this.deleteTrip}>Delete Trip</button>
         </div>
       </div>
@@ -49,8 +83,9 @@ class TripPage extends Component {
 }
 
 const mapStateToProps = state => ({
+    loggedInUser: state.loggedInUser,
     userInfo: state.userInfo,
     tripList: state.tripList,
     isUserLoggedIn: state.isUserLoggedIn
 })
-export default connect(mapStateToProps, { deleteTrip } )(TripPage)
+export default connect(mapStateToProps, { deleteTrip, updateTrip } )(TripPage)
