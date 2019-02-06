@@ -14,11 +14,12 @@
         h1 {
             font-size: 8rem;
         }
-    }//header-container
+    } //header-container
     form {
         display: flex;
         flex-direction: column;
         padding: 15px;
+        background-color: $orange-button;
         label {
             padding: 10px;
             width: 300px;
@@ -41,15 +42,15 @@
             margin: auto;
             margin-bottom: 20px;
             padding: 7px;
+            border-radius: 10px;
             &:active {
                 transform: scale(0.99)
             }
         }
         .register {
-            border: 2px solid #BA4000;
-            background-color: #BA4000;
+            border: 2px solid $blue-button;
+            background-color: $blue-button;
             color: white;
-        }// FORM
+        } // FORM
     }
-
 }
