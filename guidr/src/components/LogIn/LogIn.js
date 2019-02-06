@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginUser, getTrips, getUserInfo } from '../../actions/index'
 import './_login.scss'
@@ -43,6 +43,7 @@ class LogIn extends Component {
                 
                 <input required type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges}/>
                 <button className="button register" onClick={this.logIn}>Log In</button>
+                <p>Don't have an account yet? <Link to={'/register'}>Sign Up</Link></p>
             </form>
         </div>
     
