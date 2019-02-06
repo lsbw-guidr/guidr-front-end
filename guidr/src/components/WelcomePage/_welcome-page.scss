@@ -1,5 +1,4 @@
 @import '../../Main-Styles/Variables.scss';
-
 .welcome-page {
     width: 500px;
     margin: auto;
@@ -10,19 +9,24 @@
         font-family: $logo-font;
         h1 {
             font-size: 8rem;
+            margin-bottom: 10px;
         }
-    }//header-container
+        .logo-img {
+            height: 100px;
+            width: auto;
+        }
+    } //header-container
     font-family: $text-font;
     h2 {
         font-size: 2.5rem;
         text-align: center;
+        margin-bottom: 10px;
     }
     .button {
-        display: block;
         font-size: 2rem;
         text-align: center;
         width: 300px;
-        margin: 0 auto ;
+        margin: 0 auto;
         margin-bottom: 20px;
         padding: 7px;
         &:active {
@@ -30,14 +34,11 @@
         }
     }
     .register {
-        border: 2px solid #BA4000;
-        background-color: #BA4000;
-        color: white;
+        @include custom-btn(white, $blue-button);
+        display: block;
     }
     .log-in {
-        border: 2px solid #BA4000;
-        color: #BA4000;
-        background-color: white;
+        @include custom-btn(white, $orange-button);
+        display: block;
     }
-
 }

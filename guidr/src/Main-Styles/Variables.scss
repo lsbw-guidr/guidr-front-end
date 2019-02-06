@@ -1,7 +1,25 @@
-$logo-font: 'Patrick Hand', cursive;
-$text-font: 'Rubik', sans-serif;
-
-
+$logo-font: 'Patrick Hand',
+cursive;
+$text-font: 'Rubik',
+sans-serif;
 $blue-button: #661FFF;
 $purple-button: #BD10E0;
 $orange-button: #F5A623;
+// Button Mixin
+@mixin custom-btn($color, $background) {
+    padding: 10px 4rem;
+    border: 1px solid black;
+    color: $color;
+    background-color: $background;
+    border-radius: 10px;
+    border: solid $background 2px;
+    text-decoration: none;
+    -moz-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    -webkit-box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    box-shadow: 5px 5px 5px rgba(68, 68, 68, 0.6);
+    &:hover {
+        color: $background;
+        background-color: $color;
+        cursor: pointer;
+    }
+}
