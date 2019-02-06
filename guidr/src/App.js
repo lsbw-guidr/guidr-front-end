@@ -10,6 +10,7 @@ import WelcomePage from './components/WelcomePage/WelcomePage'
 import Register from './components/Register/Register'
 import LogIn from './components/LogIn/LogIn'
 import UserProfile from './components/UserProfile/UserProfile'
+import TripPage from './components/TripPage/TripPage'
 import TripList from './components/TripList/TripList'
 class App extends Component {
   componentWillReceiveProps(newProps) {
@@ -24,6 +25,7 @@ class App extends Component {
         <Route path="/login" render={props => <LogIn {...props} />}/>
         {/* <Route path="/my-profile" render={props => <TripList {...props} />}/> */}
         <Route path="/:username/profile/my-trips" render={props => <UserProfile {...props} />} />
+        <Route path="/:username/trip-view/:id" render={props => <TripPage {...props}/>}/>
       </div>
     );
   }
