@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
 import './_register.scss'
 
 import { connect } from 'react-redux'
@@ -48,6 +48,7 @@ class Register extends Component {
             <label>Choose a strong password:</label>
             <input type="text" name="password" placeholder="Choose a password" value={this.state.password} onChange={this.handleChanges}/>
             <button className="button register" onClick={this.register}>Register</button>
+            <p>Already have an account? <Link to={'/login'}>Log In</Link></p>
         </form>
       </div>
     )
