@@ -63,10 +63,14 @@ class UserProfile extends Component {
         {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>}
         {/* USER PROFILE INFO */}
         <div className="profile-card">
-          <h2>{this.props.userInfo.name}</h2>
-          <p>Career Length: {this.props.userInfo.careerLength}</p>
-          <p>{this.props.userInfo.tagline}</p>
-          <p>{this.props.tripList.length} trips taken</p>
+          <div className="profile-info">
+            <h2>{this.props.userInfo.name}</h2>
+            <p>{this.props.userInfo.careerLength} as a private and professional guide</p>
+            <p>{this.props.tripList.length} trips taken</p>
+            <p>{this.props.userInfo.tagline}</p>
+          </div>
+
+          
           <button onClick={this.toggleUpdate}>Update Info</button>
         </div>
         {/* NAV LINKS, ONE TO THE TRIP LIST (DEFAULT) AND THE OTHER TO ADD TRIP FORM  */}
