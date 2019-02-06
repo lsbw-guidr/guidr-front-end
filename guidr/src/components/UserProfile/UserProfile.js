@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginUser, getTrips, getUserInfo, updateUser } from '../../actions/index'
 
+import UserNavBar from '../UserNavBar/UserNavBar'
 import TripList from '../TripList/TripList'
 import AddTripForm from '../AddTripForm/AddTripForm'
 class UserProfile extends Component {
@@ -57,6 +58,7 @@ class UserProfile extends Component {
     }
     return (
       <div>
+        <UserNavBar />
         {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>}
         {/* USER PROFILE INFO */}
         <div className="profile-card">
