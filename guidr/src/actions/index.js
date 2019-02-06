@@ -132,10 +132,10 @@ export const deleteTrip = id => dispatch => {
         .delete(`https://guidr-api.herokuapp.com/user/trips/${id}`, options)
         .then(res => {
             console.log(res)
-            dispatch({
-                type: DELETE_TRIP_SUCCESS,
-                payload: res.data
-            })
+            // dispatch({
+            //     type: DELETE_TRIP_SUCCESS,
+            //     payload: res.data
+            // })
         })
         .catch(err => console.log(err))
 }
