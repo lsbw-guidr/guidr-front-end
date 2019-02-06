@@ -46,6 +46,7 @@ class UserProfile extends Component {
     if(this.state.isUpdating) {
       return(
         <div>
+          <UserNavBar />
           <label>Name: </label>
           <input type="text" name="name" value={this.state.userInfo.name} onChange={this.handleChanges}/>
           <label>Career Length: </label>
