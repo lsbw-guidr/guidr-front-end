@@ -11,7 +11,9 @@ import {REGISTER_NEW_USER,
     DELETING_TRIP,
     DELETE_TRIP_SUCCESS,
     UPDATING_TRIP,
-    UPDATE_TRIP_SUCCESS
+    UPDATE_TRIP_SUCCESS,
+    UPDATING_USER,
+    UPDATE_USER_SUCCESS
 } from '../actions/index'
 
 const initialState = {
@@ -27,14 +29,12 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isUserLoggedIn: true,
-                // loggedInUser: action.payload.user
                 loggedInUser: action.payload
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 isUserLoggedIn: true,
-                // loggedInUser: action.payload.user
                 loggedInUser: action.payload
             }
         case FETCH_TRIPS_SUCCESS:

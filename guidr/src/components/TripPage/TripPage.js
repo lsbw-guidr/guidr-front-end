@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { deleteTrip, updateTrip } from '../../actions/index'
@@ -77,6 +77,7 @@ class TripPage extends Component {
             {!this.state.isTripUpdating && <button onClick={this.toggleUpdating}>Update Trip</button>} 
             <button onClick={this.deleteTrip}>Delete Trip</button>
         </div>
+        <Link to={`/${this.props.userInfo.username}/profile/my-trips`}>Back to my profile</Link>
       </div>
     )
   }

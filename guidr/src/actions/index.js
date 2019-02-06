@@ -21,6 +21,9 @@ export const DELETE_TRIP_SUCCESS = 'DELETE_TRIP_SUCCESS'
 export const UPDATING_TRIP = 'UPDATING_TRIP'
 export const UPDATE_TRIP_SUCCESS = 'UPDATE_TRIP_SUCCESS'
 
+export const UPDATING_USER = 'UPDATING_USER'
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
+
 export const registerNewUser = (state) => dispatch => {
     dispatch({type: REGISTER_NEW_USER})
     axios
@@ -151,6 +154,22 @@ export const updateTrip = (userId, tripId, newTrip) => dispatch => {
     dispatch({type: UPDATING_TRIP})
     axios
         .put(`https://guidr-api.herokuapp.com/user/trips/${userId}/${tripId}`, newTrip, options)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+}
+
+export const updateUser = (userId, newUser) => dispatch => {
+    const token = localStorage.getItem('loginToken');
+    const options = {
+        headers: {
+            Authorization: token,
+        },
+    }
+    dispatch({type: UPDATING_USER})
+    axios
+        .put(`https://guidr-api.herokuapp.com/user/guides/update/${userId}`, newUser, options)
         .then(res => {
             console.log(res)
         })
