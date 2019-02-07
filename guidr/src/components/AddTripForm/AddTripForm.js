@@ -33,7 +33,8 @@ class AddTripForm extends Component {
   }
   addNewTrip = e => {
     e.preventDefault()
-    this.props.addNewTrip(this.props.loggedInUser.id, this.state)
+    // this.props.addNewTrip(this.props.loggedInUser.id, this.state)
+    this.props.addNewTrip(this.state)
     this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
   }
   render() {

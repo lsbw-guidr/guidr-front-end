@@ -15,7 +15,8 @@ class UserProfile extends Component {
   }
   componentDidMount() {
     const id = localStorage.getItem('userId')
-    this.props.getTrips(id)
+    // this.props.getTrips(id)
+    this.props.getTrips()
     this.props.getUserInfo(id)
     this.setState({
       userInfo: this.props.userInfo

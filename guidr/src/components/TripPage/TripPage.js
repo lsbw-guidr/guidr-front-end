@@ -52,7 +52,8 @@ class TripPage extends Component {
     }
     saveUpdates = e => {
         e.preventDefault()
-        this.props.updateTrip(this.props.loggedInUser.id, this.state.trip.id, this.state.trip)
+        // this.props.updateTrip(this.props.loggedInUser.id, this.state.trip.id, this.state.trip)
+        this.props.updateTrip(this.state.trip.id, this.state.trip)
         this.setState({
             isTripUpdating: false
         })

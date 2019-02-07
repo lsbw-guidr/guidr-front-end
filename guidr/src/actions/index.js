@@ -58,7 +58,8 @@ export const loginUser = (state) => dispatch => {
             console.log(err)
         })
 }
-export const getTrips = id => dispatch => {
+// export const getTrips = id => dispatch => {
+export const getTrips = () => dispatch => {    
     const token = localStorage.getItem('loginToken')
     const options = {
         headers: {
@@ -67,7 +68,8 @@ export const getTrips = id => dispatch => {
     }
     dispatch({type: FETCHING_TRIPS})
     axios
-        .get(`https://guidr-api.herokuapp.com/user/trips/${id}/all`, options)
+        // .get(`https://guidr-api.herokuapp.com/user/trips/${id}/all`, options)
+        .get(`https://guidr-api.herokuapp.com/user/trips/all`, options)
         .then(res => {
             console.log(res)
             dispatch({
@@ -102,7 +104,8 @@ export const getUserInfo = id => dispatch => {
     
 }
 
-export const addNewTrip = (userId, state) => dispatch => {
+// export const addNewTrip = (userId, state) => dispatch => {
+export const addNewTrip = (state) => dispatch => {
     const token = localStorage.getItem('loginToken')
     const options = {
         headers: {
@@ -111,7 +114,7 @@ export const addNewTrip = (userId, state) => dispatch => {
     }
     dispatch({type: ADDING_NEW_TRIP})
     axios
-        .post(`https://guidr-api.herokuapp.com/user/trips/${userId}/create`, state, options)
+        .post(`https://guidr-api.herokuapp.com/user/trips/create`, state, options)
         .then(res => {
             console.log(res)
             dispatch({
@@ -144,7 +147,8 @@ export const deleteTrip = tripId => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const updateTrip = (userId, tripId, newTrip) => dispatch => {
+// export const updateTrip = (userId, tripId, newTrip) => dispatch => {
+export const updateTrip = (tripId, newTrip) => dispatch => {
     const token = localStorage.getItem('loginToken');
     const options = {
         headers: {
@@ -153,7 +157,7 @@ export const updateTrip = (userId, tripId, newTrip) => dispatch => {
     }
     dispatch({type: UPDATING_TRIP})
     axios
-        .put(`https://guidr-api.herokuapp.com/user/trips/${userId}/${tripId}`, newTrip, options)
+        .put(`https://guidr-api.herokuapp.com/user/trips/${tripId}`, newTrip, options)
         .then(res => {
             console.log(res)
         })
