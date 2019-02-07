@@ -37,7 +37,45 @@
     }
 
 }
-
+.edit-profile {
+    flex-direction: column;
+    width: 50%;
+    label {
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+    input, textarea {
+        padding: 10px;
+        width: 100%;
+        margin: auto;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #E6E6E6;
+        font-family: $text-font;
+    }
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 300px;
+        margin: auto;
+        button {
+            width: 100px;
+            text-align: center;
+            margin: 0;
+            padding: 0 20px;
+        }
+        .cancel {
+            background-color: $orange-button;
+            border: 2px solid $orange-button;
+        }
+        .save {
+            border: 2px solid $blue-button;
+            background-color: $blue-button;
+        }
+    }
+}
 .link-container {
     width: 800px;
     margin: auto;

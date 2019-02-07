@@ -25,7 +25,8 @@ class UserProfile extends Component {
   toggleUpdate = e => {
     e.preventDefault()
     this.setState({
-      isUpdating: true
+      isUpdating: true,
+      userInfo: this.props.userInfo
     })
   }
   handleChanges = e => {
@@ -43,18 +44,33 @@ class UserProfile extends Component {
         isUpdating: false
     })
 }
+cancelAction = e => {
+  e.preventDefault()
+  this.setState({
+    isUpdating: false,
+    userInfo: {}
+  })
+}
   render() {
     if(this.state.isUpdating) {
       return(
         <div>
           <UserNavBar />
-          <label>Name: </label>
-          <input type="text" name="name" value={this.state.userInfo.name} onChange={this.handleChanges}/>
-          <label>Career Length: </label>
-          <input type="text" name="careerLength" value={this.state.userInfo.careerLength} onChange={this.handleChanges}/>
-          <label>Tagline: </label>
-          <input type="text" name="tagline" value={this.state.userInfo.tagline} onChange={this.handleChanges}/>
-          <button onClick={this.saveUpdates}>Save Updates</button>
+          <div className="profile-card edit-profile">
+            <label>Name: </label>
+            <input type="text" name="name" value={this.state.userInfo.name} onChange={this.handleChanges}/>
+            <label>Title: </label>
+            <input type="text" name="title" value={this.state.userInfo.title} onChange={this.handleChanges}/>
+            <label>Career Length: </label>
+            <input type="text" name="careerLength" value={this.state.userInfo.careerLength} onChange={this.handleChanges}/>
+            <label>Tagline: </label>
+            <textarea type="text" name="tagline" value={this.state.userInfo.tagline} onChange={this.handleChanges}/>
+            <div className="button-container">
+                <button className="cancel" onClick={this.cancelAction}>Cancel</button>
+               <button className="save" onClick={this.saveUpdates}>Save Updates</button>
+            </div>
+          </div>
+          
         </div>
       )
     }
@@ -66,6 +82,7 @@ class UserProfile extends Component {
         <div className="profile-card">
           <div className="profile-info">
             <h2>{this.props.userInfo.name}</h2>
+            <p>{this.props.userInfo.title}</p>
             <p>{this.props.userInfo.careerLength} as a private and professional guide</p>
             <p>{this.props.tripList.length} trips taken</p>
             <p>{this.props.userInfo.tagline}</p>
