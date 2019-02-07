@@ -3,6 +3,7 @@
     display: flex;
     width: 800px;
     margin: auto;
+    margin-bottom: 15px;
     padding: 30px;
     font-family: $text-font;
     -moz-box-shadow: 5px 5px 5px rgba(196, 194, 194, 0.6);
@@ -35,4 +36,27 @@
         }
     }
 
+}
+
+.link-container {
+    width: 800px;
+    margin: auto;
+    font-family: $text-font;
+    font-size: 2.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    a {
+        width: 50%;
+        color: #9E9E9E;
+        border-bottom: 2px solid #9E9E9E;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: all 0.25s;
+    }
+    .active {
+        background-color: #E8E2FE;
+        border-bottom: 2px solid #410EF0;
+        color: #410EF0;
+    }
 }

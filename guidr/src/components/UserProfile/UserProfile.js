@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, NavLink } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { loginUser, getTrips, getUserInfo, updateUser } from '../../actions/index'
@@ -74,9 +74,9 @@ class UserProfile extends Component {
           <button onClick={this.toggleUpdate}>Update Info</button>
         </div>
         {/* NAV LINKS, ONE TO THE TRIP LIST (DEFAULT) AND THE OTHER TO ADD TRIP FORM  */}
-        <div>
-            <Link to={`/${this.props.userInfo.username}/profile/my-trips`}>My Trips</Link>
-            <Link to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}>Add Trip</Link>
+        <div className="link-container">
+            <NavLink exact to={`/${this.props.userInfo.username}/profile/my-trips`}>My Trips</NavLink>
+            <NavLink to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}>Add Trip</NavLink>
         </div>
         <Route exact path="/:username/profile/my-trips" render={props => <TripList {...props} />} />
         <Route path="/:username/profile/my-trips/add-trip" render={props => <AddTripForm {...props} />} />
