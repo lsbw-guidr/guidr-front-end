@@ -42,7 +42,8 @@ class AddTripForm extends Component {
         <form>
             <div className="trip-types">
               <label className="main-label">Trip Type: </label>
-              <input 
+              <input
+                  required 
                   type="radio" 
                   name="designation"
                   value="Professional"
@@ -52,6 +53,7 @@ class AddTripForm extends Component {
               <label>Professional</label>
             
               <input 
+                  required
                   type="radio" 
                   name="designation"
                   value="Private"
