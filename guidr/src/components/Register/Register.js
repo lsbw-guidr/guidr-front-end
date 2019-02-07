@@ -14,8 +14,8 @@ class Register extends Component {
     password: '',
   }
   componentWillReceiveProps(newProps) {
-    if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
-        this.props.history.push('/my-profile')
+    if (newProps.loggedInUser !== this.props.loggedInUser) {
+        this.props.history.push(`/${this.props.loggedInUser.username}/profile/my-trips`)
     }
 }
     register = (e) => {
@@ -56,7 +56,8 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn
+  isUserLoggedIn: state.isUserLoggedIn,
+  loggedInUser: state.loggedInUser
 })
 
 export default connect(mapStateToProps, { registerNewUser })(Register)
