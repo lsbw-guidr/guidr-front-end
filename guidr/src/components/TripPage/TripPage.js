@@ -58,6 +58,12 @@ class TripPage extends Component {
             isTripUpdating: false
         })
     }
+    cancelUpdate = e => {
+        e.preventDefault()
+        this.setState({
+            isTripUpdating: false,
+        })
+      }
   render() {
     //   if(this.props.isUserLoggedIn === false) {
     //       return <h1>PLEASE LOG IN</h1>
@@ -65,9 +71,47 @@ class TripPage extends Component {
       if(this.state.isTripUpdating) {
           return (
               <div>
-                  <input type="text" name="title" value={this.state.trip.title} onChange={this.handleChanges}/>
-                  <input type="text" name="description" value={this.state.trip.description} onChange={this.handleChanges}/>
-                  <button onClick={this.saveUpdates}>Save Updates</button>
+                <UserNavBar />
+              <form className="update-trip-form-container">
+                    <div className="trip-types">
+                        <label className="main-label">Trip Type:</label>
+                        <input
+                            required 
+                            type="radio" 
+                            name="designation"
+                            value="Professional"
+                            checked={this.state.trip.designation === "Professional"}
+                            onChange={this.handleChanges}
+                        />
+                        <label>Professional</label>
+            
+                        <input 
+                            required
+                            type="radio" 
+                            name="designation"
+                            value="Private"
+                            checked={this.state.trip.designation === "Private"}
+                            onChange={this.handleChanges}
+                        />
+                        <label>Private</label>            
+                    </div>
+                    <div className="edit-trip-main-inputs">
+                        <label>Trip title: </label>
+                        <input type="text" name="title" value={this.state.trip.title} onChange={this.handleChanges}/>
+                        <label>Trip duration (in hours):</label>
+                        <input type="text" name="duration" value={this.state.trip.duration} onChange={this.handleChanges}/>
+                        <label>Give a brief description of your trip: </label>
+                        <textarea type="text" name="description" value={this.state.trip.description} onChange={this.handleChanges}/>
+                        <label>Trip Image URL: </label>
+                        <input type="text" name="img_url" value={this.state.trip.img_url} onChange={this.handleChanges}/>                    
+                    </div>
+
+                  <div className="button-container">
+                    <button className="button cancel" onClick={this.cancelUpdate}>Cancel</button>
+                    <button className="button update" onClick={this.saveUpdates}>Save Updates</button>                  
+                  </div>
+
+              </form>
               </div>
           )
       }
@@ -79,6 +123,7 @@ class TripPage extends Component {
                     <div className="trip-text-info">
                         <h2>{this.state.trip.title}</h2>
                         <p>{this.state.trip.designation} Trip</p>
+                        <p>Trip duration: {this.state.trip.duration} hours</p>
                         <p>Description: {this.state.trip.description}</p>
                     </div>
 
