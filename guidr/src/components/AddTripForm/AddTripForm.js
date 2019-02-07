@@ -19,6 +19,18 @@ class AddTripForm extends Component {
       [name]: value
     })
   }
+  cancelAction = e => {
+    e.preventDefault()
+    this.setState({
+      description: '',
+      designation: '',
+      duration: '',
+      img_url: "https://via.placeholder.com/150",
+      title: '',
+      type: ''
+    })
+    this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
+  }
   addNewTrip = e => {
     e.preventDefault()
     this.props.addNewTrip(this.props.loggedInUser.id, this.state)
@@ -48,18 +60,35 @@ class AddTripForm extends Component {
               />
               <label>Private</label>            
             </div>
+            <div className="trip-inputs-container">
+                <div className="trip-input">
+                    <label>What's the name of your trip?</label>
+                    <input required type="text" name="title" placeholder="Trip Title" value={this.state.title} onChange={this.handleChange} />                
+                </div>
 
-            <label>What's the name of your trip?</label>
-            <input required type="text" name="title" placeholder="Trip Title" value={this.state.title} onChange={this.handleChange} />
-            <label>What sort of trip was this? (Rock climbing? Kayaking? Etc.)</label>
-            <input required type="text" name="type" placeholder="Trip type" value={this.state.type} onChange={this.handleChange} />            
-            <label>Give us a short description of your trip:</label>
-            <textarea required type="text" name="description" placeholder="Trip Description" value={this.state.description} onChange={this.handleChange} />
-            <label>How long did your trip last?</label>
-            <input required type="text" name="duration" placeholder="Duration of trip" value={this.state.duration} onChange={this.handleChange} />
-            {/* <input type="text" name="img_url" value={this.state.img_url} onChange={this.handleChange} /> */}
+                <div className="trip-input">
+                    <label>What sort of trip was this? (Rock climbing? Kayaking? Etc.)</label>
+                    <input required type="text" name="type" placeholder="Trip type" value={this.state.type} onChange={this.handleChange} />                   
+                </div>
+ 
+                <div className="trip-input">
+                    <label>Give us a short description of your trip:</label>
+                    <textarea required type="text" name="description" placeholder="Trip Description" value={this.state.description} onChange={this.handleChange} />                
+                </div>        
 
-            <button onClick={this.addNewTrip}>Add Trip</button>
+                <div className="trip-input">
+                    <label>How long did your trip last?</label>
+                    <input required type="text" name="duration" placeholder="Duration of trip" value={this.state.duration} onChange={this.handleChange} />                
+                </div>
+
+                {/* <input type="text" name="img_url" value={this.state.img_url} onChange={this.handleChange} /> */}
+            </div>
+
+            <div className="button-container">
+              <button className="button cancel" onClick={this.cancelAction}>Cancel</button>
+              <button className="button add" onClick={this.addNewTrip}>Add Trip</button>
+            </div>
+            
         </form>
       </div>
     )

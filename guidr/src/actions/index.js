@@ -124,7 +124,7 @@ export const addNewTrip = (userId, state) => dispatch => {
         })
 }
 
-export const deleteTrip = id => dispatch => {
+export const deleteTrip = tripId => dispatch => {
     const token = localStorage.getItem('loginToken');
     const options = {
         headers: {
@@ -133,7 +133,7 @@ export const deleteTrip = id => dispatch => {
     }
     dispatch({ type: DELETING_TRIP })
     axios
-        .delete(`https://guidr-api.herokuapp.com/user/trips/${id}`, options)
+        .delete(`https://guidr-api.herokuapp.com/user/trips/${tripId}`, options)
         .then(res => {
             console.log(res)
             // dispatch({
