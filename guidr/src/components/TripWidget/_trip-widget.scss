@@ -39,6 +39,7 @@
         &:active {
             transform: scale(0.99)
         }
+        transition: all 0.25s;
     }
     &:hover {
         //background-color: #F2F2F2;
