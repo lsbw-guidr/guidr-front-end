@@ -93,7 +93,7 @@ cancelAction = e => {
           </div>
 
           
-          <button onClick={this.toggleUpdate}><i class="fas fa-edit"></i></button>
+          <button onClick={this.toggleUpdate}><i className="fas fa-edit"></i></button>
         </div>
         {/* NAV LINKS, ONE TO THE TRIP LIST (DEFAULT) AND THE OTHER TO ADD TRIP FORM  */}
         <div className="link-container">
