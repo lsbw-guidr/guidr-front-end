@@ -15,7 +15,8 @@ class TripList extends React.Component {
   }
   render() {
     return (
-    <div>
+    <div className="trip-list-container">
+      {this.props.tripList.length === 0 && <h2>You have no registered trips yet!</h2>}
       {this.props.tripList.map(trip => {
         return <TripWidget key={trip.id} trip={trip} />
       })}

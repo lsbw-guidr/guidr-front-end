@@ -81,7 +81,7 @@ cancelAction = e => {
     return (
       <div>
         <UserNavBar />
-        {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>}
+        {/* {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>} */}
         {/* USER PROFILE INFO */}
         <div className="profile-card">
           <div className="profile-info">
