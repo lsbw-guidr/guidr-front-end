@@ -2,18 +2,15 @@
 
 .welcome-page {
     width: 400px;
-    margin: auto;
-    padding: 15% 0 10% 0;
-
-
-    
+    margin: auto;    
     .welcome-container{
         background-color: $blue-button;
-        height:100%;
-        width:400px;
-        font-family: $logo-font;
-        box-shadow: (0px 0px 15px 350px $orange-button);
-        margin:auto;
+        padding-bottom: 20px;
+        // height:100%;
+        // width:400px;
+        // font-family: $logo-font;
+        // box-shadow: (0px 0px 15px 350px $orange-button);
+        // margin:auto;
     }
     
     .header-container {
