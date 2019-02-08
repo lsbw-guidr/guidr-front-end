@@ -24,6 +24,8 @@ export const UPDATE_TRIP_SUCCESS = 'UPDATE_TRIP_SUCCESS'
 export const UPDATING_USER = 'UPDATING_USER'
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS'
 
+export const LOGOUT_USER = 'LOGOUT_USER'
+
 export const registerNewUser = (state) => dispatch => {
     dispatch({type: REGISTER_NEW_USER})
     axios
@@ -181,4 +183,10 @@ export const updateUser = (userId, newUser) => dispatch => {
             console.log(res)
         })
         .catch(err => console.log(err))
+}
+
+export const logoutUser = () => dispatch => {
+    dispatch({
+        type: LOGOUT_USER
+    })
 }

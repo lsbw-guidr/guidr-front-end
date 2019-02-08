@@ -1,10 +1,13 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 
+import { connect } from 'react-redux'
+import { logoutUser } from '../../actions/index'
 class UserNavBar extends React.Component {
     logOut = e => {
         e.preventDefault()
         localStorage.clear()
+        this.props.logoutUser()
         this.props.history.push('/login')
     }
     render() {
@@ -22,4 +25,4 @@ class UserNavBar extends React.Component {
 
 }
 
-export default withRouter(UserNavBar)
+export default withRouter(connect(null, { logoutUser })(UserNavBar))

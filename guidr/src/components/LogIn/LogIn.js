@@ -12,9 +12,16 @@ class LogIn extends Component {
         console.log(this.props)
     }
     componentWillReceiveProps(newProps) {
+        const id = localStorage.getItem('userId')
+        if(newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
+            this.props.getUserInfo(id)
+        }
         if (newProps.userInfo !== this.props.userInfo) {
             this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
         }
+        // if (newProps.userInfo !== this.props.userInfo) {
+        //     this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
+        // }
     }
     handleChanges = e => {
         e.preventDefault()
@@ -27,7 +34,9 @@ class LogIn extends Component {
         e.preventDefault()
         this.props.loginUser(this.state)
         const id = localStorage.getItem('userId')
-        this.props.getUserInfo(id)
+        // this.props.getUserInfo(id) OLD WAY
+
+
     }
     render() {
         return (
@@ -46,7 +55,7 @@ class LogIn extends Component {
                         <input required type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges} />
 
                         <input required type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges} />
-                        <button className="button register" onClick={this.logIn}>Log In</button>
+                        {this.props.isLoading ? <button className="button register">Loading...</button> : <button className="button register" onClick={this.logIn}>Log In</button>}
                         <p>Don't have an account yet? <span><Link to={'/register'}>Sign Up</Link></span></p>
                     </form>
                 </div>
@@ -56,6 +65,7 @@ class LogIn extends Component {
     }
 }
 const mapStateToProps = state => ({
+    isLoading: state.isLoading,
     isUserLoggedIn: state.isUserLoggedIn,
     loggedInUser: state.loggedInUser,
     tripList: state.tripList,
