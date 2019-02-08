@@ -6,19 +6,27 @@
     border: 1px solid #E6E6E6;
     border-radius: 3px;
     background-color: white;
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: $logo-font;
-        h1 {
-            font-size: 8rem;
+    .logo-container {
+        width: 400px;
+        background-color: $blue-button;
+        img {
+            width: 70%;
+            margin: auto;
+            display: block;
         }
-    }//header-container
+    } //header-container
     form {
         display: flex;
         flex-direction: column;
         padding: 15px;
+        background-color: $orange-button;
+        label {
+            padding: 10px;
+            width: 300px;
+            margin: auto;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
         input {
             padding: 10px;
             width: 300px;
@@ -28,21 +36,26 @@
             border: 1px solid #E6E6E6;
         }
         .button {
+            outline: none;
             font-size: 2rem;
             text-align: center;
             width: 300px;
             margin: auto;
             margin-bottom: 20px;
             padding: 7px;
+            border-radius: 10px;
             &:active {
                 transform: scale(0.99)
             }
         }
         .register {
-            border: 2px solid #BA4000;
-            background-color: #BA4000;
+            border: 2px solid $blue-button;
+            background-color: $blue-button;
             color: white;
-        }// FORM
-    }
-
+        }
+        p {
+             margin: auto;
+             font-size: 1.5rem;
+        }
+    } // FORM
 }

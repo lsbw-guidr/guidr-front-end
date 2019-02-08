@@ -1,13 +1,31 @@
 @import '../../Main-Styles/Variables.scss';
 
 .welcome-page {
-    width: 500px;
-    margin: auto;
+    width: 400px;
+    margin: auto;    
+    .welcome-container{
+        background-color: $blue-button;
+        padding-bottom: 20px;
+        // height:100%;
+        // width:400px;
+        // font-family: $logo-font;
+        // box-shadow: (0px 0px 15px 350px $orange-button);
+        // margin:auto;
+    }
+    
     .header-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: $logo-font;
+       
+    
+            img {
+                height:100%;
+                width:100%;
+                filter:drop-shadow(2px 1px 1px $orange-button);
+            }
+        
+        
         h1 {
             font-size: 8rem;
         }
@@ -16,27 +34,35 @@
     h2 {
         font-size: 2.5rem;
         text-align: center;
+        padding: 0 0 15px 0;
+        color:white;
+        // filter:drop-shadow(-1px -1px 0px $orange-button);
     }
     .button {
+        outline: none;
+        display: block;
         font-size: 2rem;
         text-align: center;
         width: 300px;
-        margin: auto;
+        margin: 0 auto ;
         margin-bottom: 20px;
         padding: 7px;
+        border-radius: 10px;
         &:active {
             transform: scale(0.99)
         }
     }
     .register {
-        border: 2px solid #BA4000;
-        background-color: #BA4000;
+        border: 2px solid $orange-button;
+        background-color:$orange-button;
         color: white;
+
     }
     .log-in {
-        border: 2px solid #BA4000;
-        color: #BA4000;
+        border: 2px solid $orange-button;
+        color: $orange-button;
         background-color: white;
+
     }
 
 }
