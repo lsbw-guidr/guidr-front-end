@@ -20,7 +20,8 @@ const initialState = {
     isUserLoggedIn: false,
     loggedInUser: {},
     userInfo: {},
-    tripList: []
+    tripList: [],
+    isUserInfoUpdating: false
 }
 
 const rootReducer = (state = initialState, action) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Route, Link, NavLink } from 'react-router-dom'
 
 import { connect } from 'react-redux'
-import { loginUser, getTrips, getUserInfo, updateUser } from '../../actions/index'
+import { loginUser, getTrips, getUserInfo, updateUser, toggleUserUpdate } from '../../actions/index'
 
 import UserNavBar from '../UserNavBar/UserNavBar'
 import TripList from '../TripList/TripList'
@@ -22,8 +22,10 @@ class UserProfile extends Component {
       userInfo: this.props.userInfo
     })
   }
+
   toggleUpdate = e => {
     e.preventDefault()
+    
     this.setState({
       isUpdating: true,
       userInfo: this.props.userInfo
@@ -43,6 +45,8 @@ class UserProfile extends Component {
     this.setState({
         isUpdating: false
     })
+    const id = localStorage.getItem('userId')
+    this.props.getUserInfo(id)
 }
 cancelAction = e => {
   e.preventDefault()
@@ -107,7 +111,8 @@ const mapStateToProps = state => ({
     isUserLoggedIn: state.isUserLoggedIn,
     loggedInUser: state.loggedInUser,
     tripList: state.tripList,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    isUserInfoUpdating: state.isUserInfoUpdating
   })
 
-export default connect(mapStateToProps, {loginUser, getTrips, getUserInfo, updateUser})(UserProfile)
+export default connect(mapStateToProps, {loginUser, getTrips, getUserInfo, updateUser, toggleUserUpdate})(UserProfile)

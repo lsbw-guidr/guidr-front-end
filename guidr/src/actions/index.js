@@ -163,6 +163,9 @@ export const updateTrip = (tripId, newTrip) => dispatch => {
         })
         .catch(err => console.log(err))
 }
+export const toggleUserUpdate = () => dispatch => {
+    dispatch({type: UPDATING_USER})
+}
 
 export const updateUser = (userId, newUser) => dispatch => {
     const token = localStorage.getItem('loginToken');
