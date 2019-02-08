@@ -20,40 +20,45 @@ class LogIn extends Component {
         e.preventDefault()
         const { name, value } = e.target
         this.setState({
-          [name]: value
+            [name]: value
         })
-      }
-      logIn = e => {
-          e.preventDefault()
-          this.props.loginUser(this.state)
-          const id = localStorage.getItem('userId')
-          this.props.getUserInfo(id)
-      }
-  render() {
-    return (
-      
-        <div className="login">
-            <div className="header-container">
-                <i className="fas fa-map-marked-alt fa-5x"></i>
-                <h1>guidr</h1>
-                <h1>{this.props.isUserLoggedIn}</h1>
+    }
+    logIn = e => {
+        e.preventDefault()
+        this.props.loginUser(this.state)
+        const id = localStorage.getItem('userId')
+        this.props.getUserInfo(id)
+    }
+    render() {
+        return (
+
+            <div className="login">
+                <div className="login-container">
+                    <div className="header-container">
+                        {/* <i className="fas fa-map-marked-alt fa-5x"></i>
+                <h1>guidr</h1> */}
+                        <div className='logo-container'>
+                            <img alt="guidr" src={require('../../assets/logo_white.png')} />
+                        </div>
+                        <h1>{this.props.isUserLoggedIn}</h1>
+                    </div>
+                    <form>
+                        <input required type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges} />
+
+                        <input required type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges} />
+                        <button className="button register" onClick={this.logIn}>Log In</button>
+                        <p>Don't have an account yet? <span><Link to={'/register'}>Sign Up</Link></span></p>
+                    </form>
+                </div>
             </div>
-            <form>
-                <input required type="text" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChanges}/>
-                
-                <input required type="text" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChanges}/>
-                <button className="button register" onClick={this.logIn}>Log In</button>
-                <p>Don't have an account yet? <Link to={'/register'}>Sign Up</Link></p>
-            </form>
-        </div>
-    
-    )
-  }
+
+        )
+    }
 }
 const mapStateToProps = state => ({
     isUserLoggedIn: state.isUserLoggedIn,
     loggedInUser: state.loggedInUser,
     tripList: state.tripList,
     userInfo: state.userInfo
-  })
+})
 export default connect(mapStateToProps, { loginUser, getTrips, getUserInfo })(LogIn)
