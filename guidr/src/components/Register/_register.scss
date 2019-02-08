@@ -6,13 +6,13 @@
     border: 1px solid #E6E6E6;
     border-radius: 3px;
     background-color: white;
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: $logo-font;
-        h1 {
-            font-size: 8rem;
+    .logo-container {
+        width: 400px;
+        background-color: $blue-button;
+        img {
+            width: 70%;
+            margin: auto;
+            display: block;
         }
     } //header-container
     form {

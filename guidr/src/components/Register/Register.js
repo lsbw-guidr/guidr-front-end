@@ -32,9 +32,8 @@ class Register extends Component {
   render() {
     return (
       <div className="registration">
-        <div className="header-container">
-            <i className="fas fa-map-marked-alt fa-5x"></i>
-            <h1>guidr</h1>
+        <div className="logo-container">
+          <img alt="guidr" src={require('../../assets/logo_white.png')} />
         </div>
         <form>
             <label>What's your name?</label>
