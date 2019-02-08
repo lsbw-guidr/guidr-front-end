@@ -3,11 +3,32 @@
 .welcome-page {
     width: 500px;
     margin: auto;
+    padding: 15% 0 10% 0;
+    
+    
+    
+
+    .welcome-container{
+        background-color: $blue-button;
+        height:500px;
+        width:500px;
+        font-family: $logo-font;
+        box-shadow: (0px 0px 5px 250px $orange-button);
+    }
+    
     .header-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: $logo-font;
+       
+    
+            img {
+                height:100%;
+                width:100%;
+                filter:drop-shadow(2px 1px 1px $orange-button);
+            }
+        
+        
         h1 {
             font-size: 8rem;
         }
@@ -16,6 +37,9 @@
     h2 {
         font-size: 2.5rem;
         text-align: center;
+        padding: 0 0 15px 0;
+        color:$orange-button;
+        filter:drop-shadow(-1px -1px 0px white);
     }
     .button {
         display: block;
@@ -30,14 +54,26 @@
         }
     }
     .register {
-        border: 2px solid #BA4000;
-        background-color: #BA4000;
+        border: 2px solid $orange-button;
+        background-color:$orange-button;
         color: white;
+
+        &:hover {
+            border: 2px solid $orange-button;
+            background-color:white;
+            color: $orange-button;
+        }
     }
     .log-in {
-        border: 2px solid #BA4000;
-        color: #BA4000;
+        border: 2px solid $orange-button;
+        color: $orange-button;
         background-color: white;
+
+        &:hover {
+            border: 2px solid white;
+            background-color:$orange-button;
+            color: white;
+        }
     }
 
 }
