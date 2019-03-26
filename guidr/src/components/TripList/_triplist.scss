@@ -1,12 +1,12 @@
-@import '../../Main-Styles/Variables.scss';
+@import "../../Main-Styles/Variables.scss";
 .trip-list-container {
-    width: 800px;
-    margin: auto;
-    h2 {
-        text-align: center;
-        margin-top: 40px;
-        font-family: $text-font;
-        font-size: 3rem;
-        color: #410EF0;
-    }
+  width: 800px;
+  margin: auto;
+  h2 {
+    text-align: center;
+    margin-top: 40px;
+    font-family: $text-font;
+    font-size: 3rem;
+    color: #410ef0;
+  }
 }

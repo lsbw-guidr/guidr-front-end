@@ -1,68 +1,63 @@
-@import '../../Main-Styles/Variables.scss';
+@import "../../Main-Styles/Variables.scss";
 
 .welcome-page {
-    width: 400px;
-    margin: auto;    
-    .welcome-container{
-        background-color: $blue-button;
-        padding-bottom: 20px;
-        // height:100%;
-        // width:400px;
-        // font-family: $logo-font;
-        // box-shadow: (0px 0px 15px 350px $orange-button);
-        // margin:auto;
-    }
-    
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       
-    
-            img {
-                height:100%;
-                width:100%;
-                filter:drop-shadow(2px 1px 1px $orange-button);
-            }
-        
-        
-        h1 {
-            font-size: 8rem;
-        }
-    }//header-container
-    font-family: $text-font;
-    h2 {
-        font-size: 2.5rem;
-        text-align: center;
-        padding: 0 0 15px 0;
-        color:white;
-        // filter:drop-shadow(-1px -1px 0px $orange-button);
-    }
-    .button {
-        outline: none;
-        display: block;
-        font-size: 2rem;
-        text-align: center;
-        width: 300px;
-        margin: 0 auto ;
-        margin-bottom: 20px;
-        padding: 7px;
-        border-radius: 10px;
-        &:active {
-            transform: scale(0.99)
-        }
-    }
-    .register {
-        border: 2px solid $orange-button;
-        background-color:$orange-button;
-        color: white;
+  width: 400px;
+  margin: auto;
+  .welcome-container {
+    background-color: $blue-button;
+    padding-bottom: 20px;
+    // height:100%;
+    // width:400px;
+    // font-family: $logo-font;
+    // box-shadow: (0px 0px 15px 350px $orange-button);
+    // margin:auto;
+  }
 
-    }
-    .log-in {
-        border: 2px solid $orange-button;
-        color: $orange-button;
-        background-color: white;
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    img {
+      height: 100%;
+      width: 100%;
+      filter: drop-shadow(2px 1px 1px $orange-button);
     }
 
+    h1 {
+      font-size: 8rem;
+    }
+  } //header-container
+  font-family: $text-font;
+  h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 0 0 15px 0;
+    color: white;
+    // filter:drop-shadow(-1px -1px 0px $orange-button);
+  }
+  .button {
+    outline: none;
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 7px;
+    border-radius: 10px;
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+  .register {
+    border: 2px solid $orange-button;
+    background-color: $orange-button;
+    color: white;
+  }
+  .log-in {
+    border: 2px solid $orange-button;
+    color: $orange-button;
+    background-color: white;
+  }
 }
