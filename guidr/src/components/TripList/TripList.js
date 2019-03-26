@@ -1,28 +1,30 @@
-import React from 'react'
-import './_triplist.scss'
+import React from "react";
+import "./_triplist.scss";
 
-import { connect } from 'react-redux'
-import { loginUser, getTrips, getUserInfo } from '../../actions/index'
+import { connect } from "react-redux";
+import { loginUser, getTrips, getUserInfo } from "../../actions/index";
 
-import TripWidget from '../TripWidget/TripWidget'
+import TripWidget from "../TripWidget/TripWidget";
 class TripList extends React.Component {
   componentDidMount() {
     // console.log(this.props.loggedInUser.id)
     // this.props.getTrips(this.props.loggedInUser.id)
-    const id = localStorage.getItem('userId')
-    this.props.getTrips(id)
-    this.props.getUserInfo(id)
+    const id = localStorage.getItem("userId");
+    this.props.getTrips(id);
+    this.props.getUserInfo(id);
   }
   render() {
     return (
-    <div className="trip-list-container">
-      {this.props.tripList.length === 0 && <h2>You have no registered trips yet!</h2>}
-      {this.props.tripList.map(trip => {
-        return <TripWidget key={trip.id} trip={trip} />
-      })}
-    </div>
-  )
-}
+      <div className="trip-list-container">
+        {this.props.tripList.length === 0 && (
+          <h2>You have no registered trips yet!</h2>
+        )}
+        {this.props.tripList.map(trip => {
+          return <TripWidget key={trip.id} trip={trip} />;
+        })}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -30,5 +32,8 @@ const mapStateToProps = state => ({
   loggedInUser: state.loggedInUser,
   tripList: state.tripList,
   userInfo: state.userInfo
-})
-export default connect(mapStateToProps, { loginUser, getTrips, getUserInfo })(TripList)
+});
+export default connect(
+  mapStateToProps,
+  { loginUser, getTrips, getUserInfo }
+)(TripList);
