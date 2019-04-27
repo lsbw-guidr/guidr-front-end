@@ -11,7 +11,7 @@ import Register from "./components/Register/Register";
 import LogIn from "./components/LogIn/LogIn";
 import UserProfile from "./components/UserProfile/UserProfile";
 import TripPage from "./components/TripPage/TripPage";
-import TripList from "./components/TripList/TripList";
+
 class App extends Component {
   componentWillReceiveProps(newProps) {}
   render() {
