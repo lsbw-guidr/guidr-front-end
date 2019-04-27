@@ -29,7 +29,7 @@ class TripWidget extends Component {
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.userInfo
+  userInfo: state.authReducer.userInfo
 });
 
 export default withRouter(

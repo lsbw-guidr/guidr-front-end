@@ -13,11 +13,12 @@ import {
 const initialState = {
   loading: false,
   isUserLoggedIn: false,
+  isUserInfoUpdating: false,
   loggedInUser: {},
   userInfo: {}
 };
 
-export const authReducer = (state = initialState, action) => {
+export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case REGISTERING_NEW_USER:
       return {
@@ -56,12 +57,12 @@ export const authReducer = (state = initialState, action) => {
     case UPDATING_USER:
       return {
         ...state,
-        loading: true
+        isUserInfoUpdating: true
       };
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
-        loading: false
+        isUserInfoUpdating: false
       };
     case LOGOUT_USER:
       return {
@@ -70,4 +71,4 @@ export const authReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { deleteTrip, updateTrip } from "../../actions/index";
+import { deleteTrip, updateTrip } from "../../redux/actions/tripActions";
 
 import UserNavBar from "../UserNavBar/UserNavBar";
 
@@ -187,10 +187,10 @@ class TripPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  loggedInUser: state.loggedInUser,
-  userInfo: state.userInfo,
-  tripList: state.tripList,
-  isUserLoggedIn: state.isUserLoggedIn
+  loggedInUser: state.authReducer.loggedInUser,
+  userInfo: state.authReducer.userInfo,
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  tripList: state.tripReducer.tripList
 });
 export default connect(
   mapStateToProps,

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { addNewTrip, getTrips } from "../../actions/index";
+import { addNewTrip, getTrips } from "../../redux/actions/tripActions";
 class AddTripForm extends Component {
   state = {
     description: "",
@@ -136,11 +136,11 @@ class AddTripForm extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn,
-  loggedInUser: state.loggedInUser,
-  tripList: state.tripList,
-  userInfo: state.userInfo,
-  isUserInfoUpdating: state.isUserInfoUpdating
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loggedInUser: state.authReducer.loggedInUser,
+  tripList: state.tripReducer.tripList,
+  userInfo: state.authReducer.userInfo,
+  isUserInfoUpdating: state.authReducer.isUserInfoUpdating
 });
 export default connect(
   mapStateToProps,

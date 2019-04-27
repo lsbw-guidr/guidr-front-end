@@ -14,7 +14,7 @@ const initialState = {
   tripList: []
 };
 
-export const tripReducer = (state = initialState, action) => {
+export default function tripReducer(state = initialState, action) {
   switch (action.type) {
     case FETCHING_TRIPS:
       return {
@@ -61,4 +61,4 @@ export const tripReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
+}

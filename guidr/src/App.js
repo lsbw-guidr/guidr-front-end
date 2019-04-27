@@ -34,7 +34,7 @@ class App extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn
+  isUserLoggedIn: state.authReducer.isUserLoggedIn
 });
 export default withRouter(
   connect(
