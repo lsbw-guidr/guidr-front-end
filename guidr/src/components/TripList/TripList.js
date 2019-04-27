@@ -2,8 +2,8 @@ import React from "react";
 import "./_triplist.scss";
 
 import { connect } from "react-redux";
-import { loginUser, getTrips, getUserInfo } from "../../actions/index";
-
+import { loginUser, getUserInfo } from "../../redux/actions/authActions";
+import { getTrips } from "../../redux/actions/tripActions";
 import TripWidget from "../TripWidget/TripWidget";
 class TripList extends React.Component {
   componentDidMount() {
@@ -28,10 +28,10 @@ class TripList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn,
-  loggedInUser: state.loggedInUser,
-  tripList: state.tripList,
-  userInfo: state.userInfo
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loggedInUser: state.authReducer.loggedInUser,
+  tripList: state.tripReducer.tripList,
+  userInfo: state.authReducer.userInfo
 });
 export default connect(
   mapStateToProps,

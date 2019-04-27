@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { loginUser, getTrips, getUserInfo } from "../../actions/index";
+import { loginUser, getUserInfo } from "../../redux/actions/authActions";
+import { getTrips } from "../../redux/actions/tripActions";
 import "./_login.scss";
 class LogIn extends Component {
   state = {
     username: "",
     password: ""
   };
-  componentDidMount() {
-    console.log(this.props);
-  }
   componentWillReceiveProps(newProps) {
     const id = localStorage.getItem("userId");
     if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
@@ -21,9 +19,6 @@ class LogIn extends Component {
         `/${this.props.userInfo.username}/profile/my-trips`
       );
     }
-    // if (newProps.userInfo !== this.props.userInfo) {
-    //     this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
-    // }
   }
   handleChanges = e => {
     e.preventDefault();
@@ -35,20 +30,15 @@ class LogIn extends Component {
   logIn = e => {
     e.preventDefault();
     this.props.loginUser(this.state);
-    const id = localStorage.getItem("userId");
-    // this.props.getUserInfo(id) OLD WAY
   };
   render() {
     return (
       <div className="login">
         <div className="login-container">
           <div className="header-container">
-            {/* <i className="fas fa-map-marked-alt fa-5x"></i>
-                <h1>guidr</h1> */}
             <div className="logo-container">
               <img alt="guidr" src={require("../../assets/logo_white.png")} />
             </div>
-            <h1>{this.props.isUserLoggedIn}</h1>
           </div>
           <form>
             <input
@@ -68,7 +58,7 @@ class LogIn extends Component {
               value={this.state.password}
               onChange={this.handleChanges}
             />
-            {this.props.isLoading ? (
+            {this.props.loading ? (
               <button className="button register">Loading...</button>
             ) : (
               <button className="button register" onClick={this.logIn}>
@@ -88,11 +78,11 @@ class LogIn extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isLoading: state.isLoading,
-  isUserLoggedIn: state.isUserLoggedIn,
-  loggedInUser: state.loggedInUser,
-  tripList: state.tripList,
-  userInfo: state.userInfo
+  loading: state.authReducer.loading,
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loggedInUser: state.authReducer.loggedInUser,
+  tripList: state.tripReducer.tripList,
+  userInfo: state.authReducer.userInfo
 });
 export default connect(
   mapStateToProps,

@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/index";
+import { logoutUser } from "../../redux/actions/authActions";
 class UserNavBar extends React.Component {
   logOut = e => {
     e.preventDefault();

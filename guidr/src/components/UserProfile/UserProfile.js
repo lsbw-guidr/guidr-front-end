@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Route, Link, NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 
 import { connect } from "react-redux";
 import {
   loginUser,
-  getTrips,
   getUserInfo,
   updateUser,
   toggleUserUpdate
-} from "../../actions/index";
+} from "../../redux/actions/authActions";
+import { getTrips } from "../../redux/actions/tripActions";
 
 import UserNavBar from "../UserNavBar/UserNavBar";
 import TripList from "../TripList/TripList";
@@ -156,11 +156,11 @@ class UserProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn,
-  loggedInUser: state.loggedInUser,
-  tripList: state.tripList,
-  userInfo: state.userInfo,
-  isUserInfoUpdating: state.isUserInfoUpdating
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loggedInUser: state.authReducer.loggedInUser,
+  userInfo: state.authReducer.userInfo,
+  isUserInfoUpdating: state.authReducer.isUserInfoUpdating,
+  tripList: state.tripReducer.tripList
 });
 
 export default connect(

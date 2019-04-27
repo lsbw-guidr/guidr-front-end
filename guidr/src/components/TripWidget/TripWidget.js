@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
 import "./_trip-widget.scss";
 
 import { connect } from "react-redux";
@@ -30,7 +29,7 @@ class TripWidget extends Component {
 }
 
 const mapStateToProps = state => ({
-  userInfo: state.userInfo
+  userInfo: state.authReducer.userInfo
 });
 
 export default withRouter(

@@ -4,7 +4,7 @@ import "./_register.scss";
 
 import { connect } from "react-redux";
 
-import { registerNewUser } from "../../actions/index";
+import { registerNewUser } from "../../redux/actions/authActions";
 class Register extends Component {
   state = {
     name: "",
@@ -89,8 +89,8 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.isUserLoggedIn,
-  loggedInUser: state.loggedInUser
+  isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loggedInUser: state.authReducer.loggedInUser
 });
 
 export default connect(
