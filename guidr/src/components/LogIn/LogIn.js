@@ -21,9 +21,6 @@ class LogIn extends Component {
         `/${this.props.userInfo.username}/profile/my-trips`
       );
     }
-    // if (newProps.userInfo !== this.props.userInfo) {
-    //     this.props.history.push(`/${this.props.userInfo.username}/profile/my-trips`)
-    // }
   }
   handleChanges = e => {
     e.preventDefault();
@@ -35,20 +32,15 @@ class LogIn extends Component {
   logIn = e => {
     e.preventDefault();
     this.props.loginUser(this.state);
-    const id = localStorage.getItem("userId");
-    // this.props.getUserInfo(id) OLD WAY
   };
   render() {
     return (
       <div className="login">
         <div className="login-container">
           <div className="header-container">
-            {/* <i className="fas fa-map-marked-alt fa-5x"></i>
-                <h1>guidr</h1> */}
             <div className="logo-container">
               <img alt="guidr" src={require("../../assets/logo_white.png")} />
             </div>
-            <h1>{this.props.isUserLoggedIn}</h1>
           </div>
           <form>
             <input
