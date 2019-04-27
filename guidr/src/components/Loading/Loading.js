@@ -7,5 +7,4 @@ const Loading = () => {
     </div>
   );
 };
-import Loader from "react-loader-spinner";
 export default Loading;

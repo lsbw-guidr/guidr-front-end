@@ -109,8 +109,6 @@ class UserProfile extends Component {
     return (
       <div>
         <UserNavBar />
-        {/* {this.props.isUserLoggedIn ? <h1>YOU ARE LOGGED IN</h1> : <h1>NOT LOGGED IN REEEEEEEEEEEEE</h1>} */}
-        {/* USER PROFILE INFO */}
         <div className="profile-card">
           <div className="profile-info">
             <h2>{this.props.userInfo.name}</h2>
@@ -127,7 +125,6 @@ class UserProfile extends Component {
             <i className="fas fa-edit" />
           </button>
         </div>
-        {/* NAV LINKS, ONE TO THE TRIP LIST (DEFAULT) AND THE OTHER TO ADD TRIP FORM  */}
         <div className="link-container">
           <NavLink
             exact
