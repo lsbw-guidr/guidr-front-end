@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { loginUser, getUserInfo } from "../../redux/actions/authActions";
 import { getTrips } from "../../redux/actions/tripActions";
 import "./_login.scss";
+
+import { LoginLoading } from "../Loading/Loading";
 class LogIn extends Component {
   state = {
     username: "",
@@ -40,7 +42,7 @@ class LogIn extends Component {
               <img alt="guidr" src={require("../../assets/logo_white.png")} />
             </div>
           </div>
-          <form>
+          <form onSubmit={this.logIn}>
             <input
               required
               type="text"
@@ -59,9 +61,11 @@ class LogIn extends Component {
               onChange={this.handleChanges}
             />
             {this.props.loading ? (
-              <button className="button register">Loading...</button>
+              <button className="button register">
+                <LoginLoading />
+              </button>
             ) : (
-              <button className="button register" onClick={this.logIn}>
+              <button type="submit" className="button register">
                 Log In
               </button>
             )}
