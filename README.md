@@ -1,2 +1,2 @@
-### https://sleepy-aryabhata-1a76a2.netlify.com/
+### https://guidr-app.netlify.com/
 The React/Redux front end application for Guidr. 
