@@ -9,10 +9,10 @@ import {
   toggleUserUpdate
 } from "../../redux/actions/authActions";
 import { getTrips } from "../../redux/actions/tripActions";
-
 import UserNavBar from "../UserNavBar/UserNavBar";
 import TripList from "../TripList/TripList";
 import AddTripForm from "../AddTripForm/AddTripForm";
+import { Loading } from "../Loading/Loading";
 class UserProfile extends Component {
   state = {
     isUpdating: false,
@@ -20,17 +20,19 @@ class UserProfile extends Component {
   };
   componentDidMount() {
     const id = localStorage.getItem("userId");
-    // this.props.getTrips(id)
-    this.props.getTrips();
-    this.props.getUserInfo(id);
+    this.props.getTrips(id);
     this.setState({
       userInfo: this.props.userInfo
     });
   }
-
+  componentWillReceiveProps(newProps) {
+    if (newProps.deletingTrip === true) {
+      const id = localStorage.getItem("userId");
+      this.props.getTrips(id);
+    }
+  }
   toggleUpdate = e => {
     e.preventDefault();
-
     this.setState({
       isUpdating: true,
       userInfo: this.props.userInfo
@@ -61,7 +63,13 @@ class UserProfile extends Component {
     });
   };
   render() {
-    if (this.state.isUpdating) {
+    if (
+      this.props.loadingTrips ||
+      this.props.loadingUser ||
+      this.props.deletingTrip
+    ) {
+      return <Loading />;
+    } else if (this.state.isUpdating) {
       return (
         <div>
           <UserNavBar />
@@ -105,54 +113,57 @@ class UserProfile extends Component {
           </div>
         </div>
       );
-    }
-    return (
-      <div>
-        <UserNavBar />
-        <div className="profile-card">
-          <div className="profile-info">
-            <h2>{this.props.userInfo.name}</h2>
-            <p>{this.props.userInfo.title}</p>
-            <p>
-              {this.props.userInfo.careerLength} as a private and professional
-              guide
-            </p>
-            <p>{this.props.tripList.length} trips taken</p>
-            <p>{this.props.userInfo.tagline}</p>
-          </div>
+    } else
+      return (
+        <div>
+          <UserNavBar />
+          <div className="profile-card">
+            <div className="profile-info">
+              <h2>{this.props.userInfo.name}</h2>
+              <p>{this.props.userInfo.title}</p>
+              <p>
+                {this.props.userInfo.careerLength} as a private and professional
+                guide
+              </p>
+              <p>{this.props.tripList.length} trips taken</p>
+              <p>{this.props.userInfo.tagline}</p>
+            </div>
 
-          <button onClick={this.toggleUpdate}>
-            <i className="fas fa-edit" />
-          </button>
-        </div>
-        <div className="link-container">
-          <NavLink
+            <button onClick={this.toggleUpdate}>
+              <i className="fas fa-edit" />
+            </button>
+          </div>
+          <div className="link-container">
+            <NavLink
+              exact
+              to={`/${this.props.userInfo.username}/profile/my-trips`}
+            >
+              My Trips
+            </NavLink>
+            <NavLink
+              to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}
+            >
+              Add Trip
+            </NavLink>
+          </div>
+          <Route
             exact
-            to={`/${this.props.userInfo.username}/profile/my-trips`}
-          >
-            My Trips
-          </NavLink>
-          <NavLink
-            to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}
-          >
-            Add Trip
-          </NavLink>
+            path="/:username/profile/my-trips"
+            render={props => <TripList {...props} />}
+          />
+          <Route
+            path="/:username/profile/my-trips/add-trip"
+            render={props => <AddTripForm {...props} />}
+          />
         </div>
-        <Route
-          exact
-          path="/:username/profile/my-trips"
-          render={props => <TripList {...props} />}
-        />
-        <Route
-          path="/:username/profile/my-trips/add-trip"
-          render={props => <AddTripForm {...props} />}
-        />
-      </div>
-    );
+      );
   }
 }
 
 const mapStateToProps = state => ({
+  loadingUser: state.authReducer.loading,
+  loadingTrips: state.tripReducer.loading,
+  deletingTrip: state.tripReducer.deletingTrip,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
   loggedInUser: state.authReducer.loggedInUser,
   userInfo: state.authReducer.userInfo,
@@ -162,5 +173,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser, getTrips, getUserInfo, updateUser, toggleUserUpdate }
+  { loginUser, getUserInfo, updateUser, toggleUserUpdate, getTrips }
 )(UserProfile);

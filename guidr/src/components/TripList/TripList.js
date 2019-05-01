@@ -3,16 +3,8 @@ import "./_triplist.scss";
 
 import { connect } from "react-redux";
 import { loginUser, getUserInfo } from "../../redux/actions/authActions";
-import { getTrips } from "../../redux/actions/tripActions";
 import TripWidget from "../TripWidget/TripWidget";
 class TripList extends React.Component {
-  componentDidMount() {
-    // console.log(this.props.loggedInUser.id)
-    // this.props.getTrips(this.props.loggedInUser.id)
-    const id = localStorage.getItem("userId");
-    this.props.getTrips(id);
-    this.props.getUserInfo(id);
-  }
   render() {
     return (
       <div className="trip-list-container">
@@ -35,5 +27,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { loginUser, getTrips, getUserInfo }
+  { loginUser, getUserInfo }
 )(TripList);

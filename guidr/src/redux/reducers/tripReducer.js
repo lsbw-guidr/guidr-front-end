@@ -8,9 +8,10 @@ import {
   UPDATING_TRIP,
   UPDATE_TRIP_SUCCESS
 } from "../actions/tripActions";
-
+import { LOGOUT_USER } from "../actions/authActions";
 const initialState = {
   loading: false,
+  deletingTrip: false,
   tripList: []
 };
 
@@ -50,13 +51,16 @@ export default function tripReducer(state = initialState, action) {
     case DELETING_TRIP:
       return {
         ...state,
-        loading: true
+        deletingTrip: true
       };
     case DELETE_TRIP_SUCCESS:
       return {
         ...state,
-        loading: false,
-        tripList: action.payload
+        deletingTrip: false
+      };
+    case LOGOUT_USER:
+      return {
+        ...initialState
       };
     default:
       return state;

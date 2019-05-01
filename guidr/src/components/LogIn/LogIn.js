@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginUser, getUserInfo } from "../../redux/actions/authActions";
-import { getTrips } from "../../redux/actions/tripActions";
 import "./_login.scss";
 
 import { LoginLoading } from "../Loading/Loading";
@@ -90,5 +89,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { loginUser, getTrips, getUserInfo }
+  { loginUser, getUserInfo }
 )(LogIn);

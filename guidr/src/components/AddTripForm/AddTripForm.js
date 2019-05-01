@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { addNewTrip, getTrips } from "../../redux/actions/tripActions";
+import { addNewTrip } from "../../redux/actions/tripActions";
 class AddTripForm extends Component {
   state = {
     description: "",
@@ -35,9 +35,7 @@ class AddTripForm extends Component {
   };
   addNewTrip = e => {
     e.preventDefault();
-    // this.props.addNewTrip(this.props.loggedInUser.id, this.state)
     this.props.addNewTrip(this.state);
-    this.props.getTrips();
     this.props.history.push(
       `/${this.props.userInfo.username}/profile/my-trips`
     );
@@ -144,5 +142,5 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps,
-  { addNewTrip, getTrips }
+  { addNewTrip }
 )(AddTripForm);
