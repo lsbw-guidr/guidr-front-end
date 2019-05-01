@@ -20,7 +20,6 @@ class TripPage extends Component {
         tripList: this.props.tripList
       },
       () => {
-        console.log(this.state);
         this.retrieveTrip();
       }
     );
@@ -72,9 +71,6 @@ class TripPage extends Component {
     });
   };
   render() {
-    //   if(this.props.isUserLoggedIn === false) {
-    //       return <h1>PLEASE LOG IN</h1>
-    //   }
     if (this.state.isTripUpdating) {
       return (
         <div>
@@ -187,6 +183,8 @@ class TripPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  loading: state.tripReducer.loading,
+  deletingTrip: state.tripReducer.deletingTrip,
   loggedInUser: state.authReducer.loggedInUser,
   userInfo: state.authReducer.userInfo,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,

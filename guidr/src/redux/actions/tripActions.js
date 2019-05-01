@@ -72,11 +72,9 @@ export const deleteTrip = tripId => dispatch => {
   axios
     .delete(`https://guidr-backend.herokuapp.com/user/trips/${tripId}`, options)
     .then(res => {
-      console.log(res);
-      // dispatch({
-      //     type: DELETE_TRIP_SUCCESS,
-      //     payload: res.data
-      // })
+      dispatch({
+        type: DELETE_TRIP_SUCCESS
+      });
     })
     .catch(err => console.log(err));
 };

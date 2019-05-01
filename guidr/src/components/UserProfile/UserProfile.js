@@ -9,7 +9,6 @@ import {
   toggleUserUpdate
 } from "../../redux/actions/authActions";
 import { getTrips } from "../../redux/actions/tripActions";
-
 import UserNavBar from "../UserNavBar/UserNavBar";
 import TripList from "../TripList/TripList";
 import AddTripForm from "../AddTripForm/AddTripForm";
@@ -20,18 +19,20 @@ class UserProfile extends Component {
     userInfo: {}
   };
   componentDidMount() {
-    // const id = localStorage.getItem("userId");
-    // this.props.getTrips(id)
-    // this.props.getTrips();
-    // this.props.getUserInfo(id);
+    const id = localStorage.getItem("userId");
+    this.props.getTrips(id);
     this.setState({
       userInfo: this.props.userInfo
     });
   }
-
+  componentWillReceiveProps(newProps) {
+    if (newProps.deletingTrip === true) {
+      const id = localStorage.getItem("userId");
+      this.props.getTrips(id);
+    }
+  }
   toggleUpdate = e => {
     e.preventDefault();
-
     this.setState({
       isUpdating: true,
       userInfo: this.props.userInfo
@@ -62,7 +63,11 @@ class UserProfile extends Component {
     });
   };
   render() {
-    if (this.props.loading) {
+    if (
+      this.props.loadingTrips ||
+      this.props.loadingUser ||
+      this.props.deletingTrip
+    ) {
       return <Loading />;
     } else if (this.state.isUpdating) {
       return (
@@ -156,7 +161,9 @@ class UserProfile extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.authReducer.loading,
+  loadingUser: state.authReducer.loading,
+  loadingTrips: state.tripReducer.loading,
+  deletingTrip: state.tripReducer.deletingTrip,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
   loggedInUser: state.authReducer.loggedInUser,
   userInfo: state.authReducer.userInfo,
@@ -166,5 +173,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser, getTrips, getUserInfo, updateUser, toggleUserUpdate }
+  { loginUser, getUserInfo, updateUser, toggleUserUpdate, getTrips }
 )(UserProfile);
