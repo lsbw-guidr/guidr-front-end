@@ -7,11 +7,8 @@ import { getTrips } from "../../redux/actions/tripActions";
 import TripWidget from "../TripWidget/TripWidget";
 class TripList extends React.Component {
   componentDidMount() {
-    // console.log(this.props.loggedInUser.id)
-    // this.props.getTrips(this.props.loggedInUser.id)
     const id = localStorage.getItem("userId");
     this.props.getTrips(id);
-    this.props.getUserInfo(id);
   }
   render() {
     return (
