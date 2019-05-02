@@ -12,6 +12,7 @@ import { getTrips } from "../../redux/actions/tripActions";
 import UserNavBar from "../UserNavBar/UserNavBar";
 import TripList from "../TripList/TripList";
 import AddTripForm from "../AddTripForm/AddTripForm";
+import EditUserInfo from "../EditUserInfo/EditUserInfo";
 import { Loading } from "../Loading/Loading";
 class UserProfile extends Component {
   state = {
@@ -34,8 +35,7 @@ class UserProfile extends Component {
   toggleUpdate = e => {
     e.preventDefault();
     this.setState({
-      isUpdating: true,
-      userInfo: this.props.userInfo
+      isUpdating: true
     });
   };
   handleChanges = e => {
@@ -46,13 +46,12 @@ class UserProfile extends Component {
       }
     });
   };
-  saveUpdates = e => {
-    e.preventDefault();
-    this.props.updateUser(this.props.loggedInUser.id, this.state.userInfo);
+  saveUpdates = state => {
+    const id = localStorage.getItem("userId");
+    this.props.updateUser(id, state);
     this.setState({
       isUpdating: false
     });
-    const id = localStorage.getItem("userId");
     this.props.getUserInfo(id);
   };
   cancelAction = e => {
@@ -73,44 +72,11 @@ class UserProfile extends Component {
       return (
         <div>
           <UserNavBar />
-          <div className="profile-card edit-profile">
-            <label>Name: </label>
-            <input
-              type="text"
-              name="name"
-              value={this.state.userInfo.name}
-              onChange={this.handleChanges}
-            />
-            <label>Title: </label>
-            <input
-              type="text"
-              name="title"
-              value={this.state.userInfo.title}
-              onChange={this.handleChanges}
-            />
-            <label>Career Length: </label>
-            <input
-              type="text"
-              name="careerLength"
-              value={this.state.userInfo.careerLength}
-              onChange={this.handleChanges}
-            />
-            <label>Tagline: </label>
-            <textarea
-              type="text"
-              name="tagline"
-              value={this.state.userInfo.tagline}
-              onChange={this.handleChanges}
-            />
-            <div className="button-container">
-              <button className="cancel" onClick={this.cancelAction}>
-                Cancel
-              </button>
-              <button className="save" onClick={this.saveUpdates}>
-                Save Updates
-              </button>
-            </div>
-          </div>
+          <EditUserInfo
+            userInfo={this.props.userInfo}
+            saveUpdates={this.saveUpdates}
+            cancelAction={this.cancelAction}
+          />
         </div>
       );
     } else
