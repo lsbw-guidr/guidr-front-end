@@ -58,12 +58,14 @@ export default function authReducer(state = initialState, action) {
     case UPDATING_USER:
       return {
         ...state,
-        isUserInfoUpdating: true
+        isUserInfoUpdating: true,
+        loading: true
       };
     case UPDATE_USER_SUCCESS:
       return {
         ...state,
-        isUserInfoUpdating: false
+        isUserInfoUpdating: false,
+        loading: false
       };
     case LOGOUT_USER:
       return {

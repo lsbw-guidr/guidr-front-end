@@ -27,9 +27,12 @@ class UserProfile extends Component {
     });
   }
   componentWillReceiveProps(newProps) {
+    const id = localStorage.getItem("userId");
     if (newProps.deletingTrip === true) {
-      const id = localStorage.getItem("userId");
       this.props.getTrips(id);
+    }
+    if (newProps.isUserInfoUpdating === true) {
+      this.props.getUserInfo(id);
     }
   }
   toggleUpdate = e => {
