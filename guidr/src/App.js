@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import { connect } from "react-redux";
-
 import "./Main-Styles/App.scss";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 import Register from "./components/Register/Register";
@@ -20,7 +18,8 @@ class App extends Component {
         <Route path="/register" render={props => <Register {...props} />} />
         <Route path="/login" render={props => <LogIn {...props} />} />
         <Route
-          path="/:username/profile/my-trips"
+          path="/profile/my-trips"
+          // path="/:username/profile/my-trips"
           render={props => <UserProfile {...props} />}
         />
         <Route
@@ -31,12 +30,5 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  isUserLoggedIn: state.authReducer.isUserLoggedIn
-});
-export default withRouter(
-  connect(
-    mapStateToProps,
-    {}
-  )(App)
-);
+
+export default withRouter(App);

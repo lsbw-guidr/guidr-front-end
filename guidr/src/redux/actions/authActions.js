@@ -19,7 +19,6 @@ export const registerNewUser = state => dispatch => {
   axios
     .post("https://guidr-backend.herokuapp.com/auth/register", state)
     .then(res => {
-      console.log(res);
       localStorage.setItem("loginToken", `${res.data.token}`);
       localStorage.setItem("userId", `${res.data.id}`);
       dispatch({
@@ -37,7 +36,6 @@ export const loginUser = state => dispatch => {
   axios
     .post("https://guidr-backend.herokuapp.com/auth/login", state)
     .then(res => {
-      console.log(res);
       localStorage.setItem("loginToken", `${res.data.token}`);
       localStorage.setItem("userId", `${res.data.id}`);
       dispatch({
@@ -60,7 +58,6 @@ export const getUserInfo = id => dispatch => {
   axios
     .get(`https://guidr-backend.herokuapp.com/user/guides/${id}`, options)
     .then(res => {
-      console.log(res);
       dispatch({
         type: FETCH_USER_SUCCESS,
         payload: res.data
@@ -88,7 +85,7 @@ export const updateUser = (userId, newUser) => dispatch => {
       options
     )
     .then(res => {
-      console.log(res);
+      dispatch({ type: UPDATE_USER_SUCCESS });
     })
     .catch(err => console.log(err));
 };

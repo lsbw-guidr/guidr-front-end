@@ -29,16 +29,14 @@ class AddTripForm extends Component {
       title: "",
       type: ""
     });
-    this.props.history.push(
-      `/${this.props.userInfo.username}/profile/my-trips`
-    );
+    this.props.history.push("/profile/my-trips");
+    // `/${this.props.userInfo.username}/profile/my-trips`
   };
   addNewTrip = e => {
     e.preventDefault();
     this.props.addNewTrip(this.state);
-    this.props.history.push(
-      `/${this.props.userInfo.username}/profile/my-trips`
-    );
+    this.props.history.push("/profile/my-trips");
+    // `/${this.props.userInfo.username}/profile/my-trips`
   };
   render() {
     return (
