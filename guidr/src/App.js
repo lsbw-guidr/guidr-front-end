@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import { connect } from "react-redux";
-
 import "./Main-Styles/App.scss";
 import WelcomePage from "./components/WelcomePage/WelcomePage";
 import Register from "./components/Register/Register";
@@ -31,12 +29,5 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  isUserLoggedIn: state.authReducer.isUserLoggedIn
-});
-export default withRouter(
-  connect(
-    mapStateToProps,
-    {}
-  )(App)
-);
+
+export default withRouter(App);
