@@ -105,23 +105,27 @@ class UserProfile extends Component {
           <div className="link-container">
             <NavLink
               exact
-              to={`/${this.props.userInfo.username}/profile/my-trips`}
+              to={`/profile/my-trips`}
+              // to={`/${this.props.userInfo.username}/profile/my-trips`}
             >
               My Trips
             </NavLink>
             <NavLink
-              to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}
+              to={`/profile/my-trips/add-trip`}
+              // to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}
             >
               Add Trip
             </NavLink>
           </div>
           <Route
             exact
-            path="/:username/profile/my-trips"
+            path="/profile/my-trips"
+            // path="/:username/profile/my-trips"
             render={props => <TripList {...props} />}
           />
           <Route
-            path="/:username/profile/my-trips/add-trip"
+            path="/profile/my-trips/add-trip"
+            // path="/:username/profile/my-trips/add-trip"
             render={props => <AddTripForm {...props} />}
           />
         </div>

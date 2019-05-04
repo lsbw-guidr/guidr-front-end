@@ -18,7 +18,8 @@ class App extends Component {
         <Route path="/register" render={props => <Register {...props} />} />
         <Route path="/login" render={props => <LogIn {...props} />} />
         <Route
-          path="/:username/profile/my-trips"
+          path="/profile/my-trips"
+          // path="/:username/profile/my-trips"
           render={props => <UserProfile {...props} />}
         />
         <Route
