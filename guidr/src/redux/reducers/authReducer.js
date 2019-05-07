@@ -10,6 +10,8 @@ import {
   LOGOUT_USER
 } from "../actions/authActions";
 
+import { toast } from "react-toastify";
+
 const initialState = {
   loading: false,
   isUserLoggedIn: false,
@@ -62,6 +64,7 @@ export default function authReducer(state = initialState, action) {
         loading: true
       };
     case UPDATE_USER_SUCCESS:
+      toast.info("User info successfully updated.");
       return {
         ...state,
         isUserInfoUpdating: false,
