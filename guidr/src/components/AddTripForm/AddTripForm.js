@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { connect } from "react-redux";
 
-import { addNewTrip } from "../../redux/actions/tripActions";
+import { getTrips, addNewTrip } from "../../redux/actions/tripActions";
 class AddTripForm extends Component {
   state = {
     description: "",
@@ -19,6 +19,12 @@ class AddTripForm extends Component {
       [name]: value
     });
   };
+  componentWillReceiveProps(newProps) {
+    if (newProps.addingTrip === false) {
+      this.props.getTrips();
+      this.props.history.push("/profile/my-trips");
+    }
+  }
   cancelAction = e => {
     e.preventDefault();
     this.setState({
@@ -30,13 +36,11 @@ class AddTripForm extends Component {
       type: ""
     });
     this.props.history.push("/profile/my-trips");
-    // `/${this.props.userInfo.username}/profile/my-trips`
   };
   addNewTrip = e => {
     e.preventDefault();
     this.props.addNewTrip(this.state);
     this.props.history.push("/profile/my-trips");
-    // `/${this.props.userInfo.username}/profile/my-trips`
   };
   render() {
     return (
@@ -132,13 +136,9 @@ class AddTripForm extends Component {
   }
 }
 const mapStateToProps = state => ({
-  isUserLoggedIn: state.authReducer.isUserLoggedIn,
-  loggedInUser: state.authReducer.loggedInUser,
-  tripList: state.tripReducer.tripList,
-  userInfo: state.authReducer.userInfo,
-  isUserInfoUpdating: state.authReducer.isUserInfoUpdating
+  addingTrip: state.tripReducer.addingTrip
 });
 export default connect(
   mapStateToProps,
-  { addNewTrip }
+  { getTrips, addNewTrip }
 )(AddTripForm);
