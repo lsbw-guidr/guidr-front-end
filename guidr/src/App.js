@@ -10,6 +10,8 @@ import LogIn from "./components/LogIn/LogIn";
 import UserProfile from "./components/UserProfile/UserProfile";
 import TripPage from "./components/TripPage/TripPage";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 class App extends Component {
   render() {
     return (
@@ -19,13 +21,13 @@ class App extends Component {
         <Route path="/login" render={props => <LogIn {...props} />} />
         <Route
           path="/profile/my-trips"
-          // path="/:username/profile/my-trips"
           render={props => <UserProfile {...props} />}
         />
         <Route
           path="/:username/trip-view/:id"
           render={props => <TripPage {...props} />}
         />
+        <ToastContainer position="bottom-right" />
       </div>
     );
   }
