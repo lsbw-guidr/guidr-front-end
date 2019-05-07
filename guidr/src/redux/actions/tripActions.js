@@ -21,7 +21,6 @@ export const getTrips = () => dispatch => {
   };
   dispatch({ type: FETCHING_TRIPS });
   axios
-    // .get(`https://guidr-backend.herokuapp.com/user/trips/${id}/all`, options)
     .get(`https://guidr-backend.herokuapp.com/user/trips/all`, options)
     .then(res => {
       dispatch({
@@ -93,7 +92,7 @@ export const updateTrip = (tripId, newTrip) => dispatch => {
       options
     )
     .then(res => {
-      console.log(res);
+      dispatch({ type: UPDATE_TRIP_SUCCESS });
     })
     .catch(err => console.log(err));
 };

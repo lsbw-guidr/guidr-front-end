@@ -9,6 +9,8 @@ import {
   UPDATE_TRIP_SUCCESS
 } from "../actions/tripActions";
 import { LOGOUT_USER } from "../actions/authActions";
+
+import { toast } from "react-toastify";
 const initialState = {
   loading: false,
   deletingTrip: false,
@@ -35,6 +37,7 @@ export default function tripReducer(state = initialState, action) {
         addingTrip: true
       };
     case ADD_TRIP_SUCCESS:
+      toast.info("Trip successfully added.");
       return {
         ...state,
         addingTrip: false
@@ -45,6 +48,7 @@ export default function tripReducer(state = initialState, action) {
         loading: true
       };
     case UPDATE_TRIP_SUCCESS:
+      toast.info("Trip info successfully updated.");
       return {
         ...state,
         loading: false
@@ -55,6 +59,7 @@ export default function tripReducer(state = initialState, action) {
         deletingTrip: true
       };
     case DELETE_TRIP_SUCCESS:
+      toast.info("Trip successfully deleted.");
       return {
         ...state,
         deletingTrip: false
