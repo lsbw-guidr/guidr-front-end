@@ -24,7 +24,6 @@ export const getTrips = () => dispatch => {
     // .get(`https://guidr-backend.herokuapp.com/user/trips/${id}/all`, options)
     .get(`https://guidr-backend.herokuapp.com/user/trips/all`, options)
     .then(res => {
-      console.log(res);
       dispatch({
         type: FETCH_TRIPS_SUCCESS,
         payload: res.data

@@ -12,6 +12,7 @@ import { LOGOUT_USER } from "../actions/authActions";
 const initialState = {
   loading: false,
   deletingTrip: false,
+  addingTrip: false,
   tripList: []
 };
 
@@ -31,12 +32,12 @@ export default function tripReducer(state = initialState, action) {
     case ADDING_NEW_TRIP:
       return {
         ...state,
-        loading: true
+        addingTrip: true
       };
     case ADD_TRIP_SUCCESS:
       return {
         ...state,
-        loading: false
+        addingTrip: false
       };
     case UPDATING_TRIP:
       return {

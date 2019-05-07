@@ -28,7 +28,7 @@ class UserProfile extends Component {
   }
   componentWillReceiveProps(newProps) {
     const id = localStorage.getItem("userId");
-    if (newProps.deletingTrip === true) {
+    if (newProps.deletingTrip === true || newProps.addingTrip === true) {
       this.props.getTrips(id);
     }
     if (newProps.isUserInfoUpdating === true) {
@@ -68,7 +68,8 @@ class UserProfile extends Component {
     if (
       this.props.loadingTrips ||
       this.props.loadingUser ||
-      this.props.deletingTrip
+      this.props.deletingTrip ||
+      this.props.addingTrip
     ) {
       return <Loading />;
     } else if (this.state.isUpdating) {
@@ -137,6 +138,7 @@ const mapStateToProps = state => ({
   loadingUser: state.authReducer.loading,
   loadingTrips: state.tripReducer.loading,
   deletingTrip: state.tripReducer.deletingTrip,
+  addingTrip: state.tripReducer.addingTrip,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
   loggedInUser: state.authReducer.loggedInUser,
   userInfo: state.authReducer.userInfo,
