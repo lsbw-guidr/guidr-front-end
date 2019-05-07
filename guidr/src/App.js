@@ -27,7 +27,10 @@ class App extends Component {
           path="/:username/trip-view/:id"
           render={props => <TripPage {...props} />}
         />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer
+          position="bottom-right"
+          style={{ fontSize: "1.8rem" }}
+        />
       </div>
     );
   }
