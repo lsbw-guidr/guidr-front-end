@@ -1,7 +1,11 @@
 @import "../../Main-Styles/Variables.scss";
 .profile-card {
   display: flex;
-  width: 800px;
+  @media (max-width: $mobile) {
+    flex-direction: column;
+  }
+  width: 95%;
+  max-width: 800px;
   margin: auto;
   margin-bottom: 15px;
   padding: 30px;
@@ -12,6 +16,9 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   .profile-info {
     width: 70%;
+    @media (max-width: $mobile) {
+      width: auto;
+    }
     h2 {
       font-size: 2.5rem;
       margin-bottom: 15px;

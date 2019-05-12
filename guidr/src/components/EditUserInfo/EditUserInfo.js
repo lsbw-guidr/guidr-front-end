@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import "./_edit_user_info.scss";
 class EditUserInfo extends Component {
   state = {
     name: "",
@@ -25,7 +26,7 @@ class EditUserInfo extends Component {
   };
   render() {
     return (
-      <div className="profile-card edit-profile">
+      <div className="card edit-profile">
         <label>Name: </label>
         <input
           type="text"
