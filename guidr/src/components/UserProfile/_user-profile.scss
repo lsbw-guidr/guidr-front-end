@@ -91,6 +91,9 @@
 }
 .link-container {
   width: 800px;
+  @media (max-width: $mobile) {
+    width: 100%;
+  }
   margin: auto;
   font-family: $text-font;
   font-size: 2.5rem;
