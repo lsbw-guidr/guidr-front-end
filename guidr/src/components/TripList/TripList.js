@@ -6,16 +6,24 @@ import { loginUser, getUserInfo } from "../../redux/actions/authActions";
 import TripWidget from "../TripWidget/TripWidget";
 class TripList extends React.Component {
   render() {
-    return (
-      <div className="trip-list-container">
-        {this.props.tripList.length === 0 && (
-          <h2>You have no registered trips yet!</h2>
-        )}
-        {this.props.tripList.map(trip => {
-          return <TripWidget key={trip.id} trip={trip} />;
-        })}
-      </div>
-    );
+    if (this.props.tripList.length === 0) {
+      return (
+        <div className="no-trips">
+          <h2>
+            You have no registered trips yet! Click "Add Trip" to add trips to
+            your profile.
+          </h2>
+        </div>
+      );
+    } else {
+      return (
+        <div className="trip-list-container">
+          {this.props.tripList.map(trip => {
+            return <TripWidget key={trip.id} trip={trip} />;
+          })}
+        </div>
+      );
+    }
   }
 }
 
