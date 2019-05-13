@@ -12,14 +12,11 @@ class LogIn extends Component {
   };
   componentWillReceiveProps(newProps) {
     const id = localStorage.getItem("userId");
-    // if (newProps.isUserLoggedIn === true && newProps.loading === false) {
     if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
       this.props.getUserInfo(id);
     }
     if (newProps.userInfo !== this.props.userInfo) {
-      // if (typeof newProps.userInfo.username !== undefined) {
       this.props.history.push("/profile/my-trips");
-      // `/${this.props.userInfo.username}/profile/my-trips`
     }
   }
   handleChanges = e => {
