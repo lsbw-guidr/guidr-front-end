@@ -2,23 +2,24 @@
 
 .welcome-page {
   width: 400px;
-  margin: auto;
+  margin: 20px auto;
+  @media (max-width: $mobile) {
+    width: 95%;
+  }
   .welcome-container {
     background-color: $blue-button;
     padding-bottom: 20px;
+    border-radius: 5px;
   }
-
   .header-container {
     display: flex;
     align-items: center;
     justify-content: center;
-
     img {
       height: 100%;
       width: 100%;
       filter: drop-shadow(2px 1px 1px $orange-button);
     }
-
     h1 {
       font-size: 8rem;
     }
@@ -29,14 +30,13 @@
     text-align: center;
     padding: 0 0 15px 0;
     color: white;
-    // filter:drop-shadow(-1px -1px 0px $orange-button);
   }
   .button {
     outline: none;
     display: block;
     font-size: 2rem;
     text-align: center;
-    width: 300px;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 20px;
     padding: 7px;
