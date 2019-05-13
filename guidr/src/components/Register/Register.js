@@ -15,9 +15,7 @@ class Register extends Component {
   };
   componentWillReceiveProps(newProps) {
     if (newProps.loggedInUser !== this.props.loggedInUser) {
-      this.props.history.push(
-        `/${this.props.loggedInUser.username}/profile/my-trips`
-      );
+      this.props.history.push(`/profile/my-trips`);
     }
   }
   register = e => {
