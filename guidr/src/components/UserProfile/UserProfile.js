@@ -104,29 +104,18 @@ class UserProfile extends Component {
             </button>
           </div>
           <div className="link-container">
-            <NavLink
-              exact
-              to={`/profile/my-trips`}
-              // to={`/${this.props.userInfo.username}/profile/my-trips`}
-            >
+            <NavLink exact to={`/profile/my-trips`}>
               My Trips
             </NavLink>
-            <NavLink
-              to={`/profile/my-trips/add-trip`}
-              // to={`/${this.props.userInfo.username}/profile/my-trips/add-trip`}
-            >
-              Add Trip
-            </NavLink>
+            <NavLink to={`/profile/my-trips/add-trip`}>Add Trip</NavLink>
           </div>
           <Route
             exact
             path="/profile/my-trips"
-            // path="/:username/profile/my-trips"
             render={props => <TripList {...props} />}
           />
           <Route
             path="/profile/my-trips/add-trip"
-            // path="/:username/profile/my-trips/add-trip"
             render={props => <AddTripForm {...props} />}
           />
         </div>
@@ -139,8 +128,6 @@ const mapStateToProps = state => ({
   loadingTrips: state.tripReducer.loading,
   deletingTrip: state.tripReducer.deletingTrip,
   addingTrip: state.tripReducer.addingTrip,
-  isUserLoggedIn: state.authReducer.isUserLoggedIn,
-  loggedInUser: state.authReducer.loggedInUser,
   userInfo: state.authReducer.userInfo,
   isUserInfoUpdating: state.authReducer.isUserInfoUpdating,
   tripList: state.tripReducer.tripList

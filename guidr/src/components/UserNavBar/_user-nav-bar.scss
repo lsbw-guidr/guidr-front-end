@@ -20,6 +20,9 @@ nav {
       height: 100%;
     }
   }
+  @media (max-width: $mobile) {
+    padding: 0 10px;
+  }
   button {
     color: white;
     background-color: $orange-button;
