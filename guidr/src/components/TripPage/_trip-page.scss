@@ -10,6 +10,9 @@
   font-family: $text-font;
   display: flex;
   flex-direction: column;
+  @media (max-width: $mobile) {
+    width: 95%;
+  }
   .trip-types {
     text-align: center;
     font-size: 1.5rem;
@@ -18,7 +21,6 @@
     margin-bottom: 20px;
     .main-label {
       font-weight: 700;
-
       text-transform: uppercase;
     }
     input {
@@ -56,11 +58,17 @@
   .edit-trip-main-inputs {
     width: 80%;
     margin: auto;
+    @media (max-width: $mobile) {
+      width: 100%;
+    }
     label {
       font-size: 1.5rem;
       margin-bottom: 10px;
       display: block;
       margin-left: 35px;
+      @media (max-width: $mobile) {
+        margin-left: 20px;
+      }
     }
     input,
     textarea {
@@ -76,6 +84,9 @@
   }
   .button-container {
     display: flex;
+    @media (max-width: $mobile) {
+      flex-direction: column-reverse;
+    }
     .button {
       outline: none;
       font-size: 2rem;
@@ -85,8 +96,10 @@
       margin-bottom: 20px;
       padding: 7px;
       border-radius: 10px;
-
       color: white;
+      @media (max-width: $mobile) {
+        margin-bottom: 10px;
+      }
       &:active {
         transform: scale(0.99);
       }

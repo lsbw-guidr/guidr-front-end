@@ -117,13 +117,6 @@ class TripPage extends Component {
                 value={this.state.trip.description}
                 onChange={this.handleChanges}
               />
-              <label>Trip Image URL: </label>
-              <input
-                type="text"
-                name="img_url"
-                value={this.state.trip.img_url}
-                onChange={this.handleChanges}
-              />
             </div>
 
             <div className="button-container">
