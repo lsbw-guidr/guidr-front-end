@@ -45,7 +45,6 @@ class TripPage extends Component {
     e.preventDefault();
     this.props.deleteTrip(this.state.trip.id);
     this.props.history.push("/profile/my-trips");
-    // `/${this.props.userInfo.username}/profile/my-trips`
   };
   toggleUpdating = e => {
     e.preventDefault();
@@ -57,7 +56,6 @@ class TripPage extends Component {
   };
   saveUpdates = e => {
     e.preventDefault();
-    // this.props.updateTrip(this.props.loggedInUser.id, this.state.trip.id, this.state.trip)
     this.props.updateTrip(this.state.trip.id, this.state.trip);
     this.setState({
       isTripUpdating: false
@@ -144,6 +142,12 @@ class TripPage extends Component {
       <div>
         <UserNavBar />
         <div className="trip-page">
+          <div className="back-link-container">
+            <Link to={`/profile/my-trips`}>
+              <i className="fas fa-arrow-left fa-3x" />
+              <p>Back to my profile</p>
+            </Link>
+          </div>
           <div className="trip-info">
             <div className="trip-text-info">
               <h2>{this.state.trip.title}</h2>
@@ -168,13 +172,6 @@ class TripPage extends Component {
             <button className="button delete" onClick={this.deleteTrip}>
               Delete Trip
             </button>
-          </div>
-          <div className="back-link-container">
-            <Link to={`/profile/my-trips`}>
-              {/* <Link to={`/${this.props.userInfo.username}/profile/my-trips`}> */}
-              <i className="fas fa-arrow-left fa-3x" />
-              <p>Back to my profile</p>
-            </Link>
           </div>
         </div>
       </div>
