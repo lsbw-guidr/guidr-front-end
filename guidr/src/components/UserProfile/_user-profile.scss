@@ -39,6 +39,9 @@
     height: 50px;
     width: 50px;
     padding: 7px;
+    @media (max-width: $mobile) {
+      margin: 0 auto;
+    }
     &:active {
       transform: scale(0.99);
     }
