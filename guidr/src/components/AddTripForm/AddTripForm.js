@@ -82,21 +82,19 @@ class AddTripForm extends Component {
             </div>
 
             <div className="trip-input">
-              <label>
-                What sort of trip was this? (Rock climbing? Kayaking? Etc.)
-              </label>
+              <label>What type of trip was this?</label>
               <input
                 required
                 type="text"
                 name="type"
-                placeholder="Trip type"
+                placeholder="Trip type (Rock climbing, kayaking, etc.)"
                 value={this.state.type}
                 onChange={this.handleChange}
               />
             </div>
 
             <div className="trip-input">
-              <label>Give us a short description of your trip:</label>
+              <label>Give a short description of your trip:</label>
               <textarea
                 required
                 type="text"
@@ -108,10 +106,10 @@ class AddTripForm extends Component {
             </div>
 
             <div className="trip-input">
-              <label>How long did your trip last?</label>
+              <label>How many hours did your trip last?</label>
               <input
                 required
-                type="text"
+                type="number"
                 name="duration"
                 placeholder="Duration of trip"
                 value={this.state.duration}
