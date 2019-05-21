@@ -19,9 +19,6 @@ class LogIn extends Component {
     if (newProps.userInfo !== this.props.userInfo) {
       this.props.history.push("/profile/my-trips");
     }
-    if (newProps.loginError === true) {
-      this.render();
-    }
   }
   handleChanges = e => {
     e.preventDefault();
