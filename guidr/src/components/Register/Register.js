@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./_register.scss";
 
 import { connect } from "react-redux";
-
-import { registerNewUser } from "../../redux/actions/authActions";
+import { LoginLoading } from "../Loading/Loading";
+import { registerNewUser, getUserInfo } from "../../redux/actions/authActions";
 class Register extends Component {
   state = {
     name: "",
@@ -74,9 +74,15 @@ class Register extends Component {
             value={this.state.password}
             onChange={this.handleChanges}
           />
-          <button className="button register" onClick={this.register}>
-            Register
-          </button>
+          {this.props.loading ? (
+            <button className="button register">
+              <LoginLoading />
+            </button>
+          ) : (
+            <button className="button register" onClick={this.register}>
+              Register
+            </button>
+          )}
           <p>
             Already have an account? <Link to={"/login"}>Log In</Link>
           </p>
@@ -87,11 +93,12 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
+  loading: state.authReducer.loading,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
   loggedInUser: state.authReducer.loggedInUser
 });
 
 export default connect(
   mapStateToProps,
-  { registerNewUser }
+  { registerNewUser, getUserInfo }
 )(Register);
