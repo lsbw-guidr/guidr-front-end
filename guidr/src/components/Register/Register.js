@@ -11,11 +11,17 @@ class Register extends Component {
     username: "",
     age: 0,
     careerLength: "",
-    password: ""
+    password: "",
+    title: "",
+    tagline: ""
   };
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedInUser !== this.props.loggedInUser) {
-      this.props.history.push(`/profile/my-trips`);
+    const id = localStorage.getItem("userId");
+    if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
+      this.props.getUserInfo(id);
+    }
+    if (newProps.userInfo !== this.props.userInfo) {
+      this.props.history.push("/profile/my-trips");
     }
   }
   register = e => {
@@ -58,6 +64,20 @@ class Register extends Component {
             value={this.state.careerLength}
             onChange={this.handleChanges}
           />
+          <label>What type of guide are you?</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChanges}
+          />
+          <label>Give a short description of yourself:</label>
+          <input
+            type="text"
+            name="tagline"
+            value={this.state.tagline}
+            onChange={this.handleChanges}
+          />
           <label>Pick a username:</label>
           <input
             type="text"
@@ -95,7 +115,8 @@ class Register extends Component {
 const mapStateToProps = state => ({
   loading: state.authReducer.loading,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
-  loggedInUser: state.authReducer.loggedInUser
+  loggedInUser: state.authReducer.loggedInUser,
+  userInfo: state.authReducer.userInfo
 });
 
 export default connect(
