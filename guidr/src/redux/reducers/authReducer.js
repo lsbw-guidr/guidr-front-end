@@ -3,11 +3,13 @@ import {
   REGISTER_SUCCESS,
   LOGIN_USER,
   LOGIN_SUCCESS,
+  CLEAR_LOGIN_ERROR,
   FETCHING_USER_INFO,
   FETCH_USER_SUCCESS,
   UPDATING_USER,
   UPDATE_USER_SUCCESS,
-  LOGOUT_USER
+  LOGOUT_USER,
+  LOGIN_ERROR
 } from "../actions/authActions";
 
 import { toast } from "react-toastify";
@@ -15,6 +17,7 @@ import { toast } from "react-toastify";
 const initialState = {
   loading: false,
   isUserLoggedIn: false,
+  loginError: false,
   isUserInfoUpdating: false,
   loggedInUser: {},
   userInfo: {}
@@ -45,6 +48,15 @@ export default function authReducer(state = initialState, action) {
         loading: false,
         isUserLoggedIn: true,
         loggedInUser: action.payload
+      };
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        loginError: true
+      };
+    case CLEAR_LOGIN_ERROR:
+      return {
+        ...initialState
       };
     case FETCHING_USER_INFO:
       return {
