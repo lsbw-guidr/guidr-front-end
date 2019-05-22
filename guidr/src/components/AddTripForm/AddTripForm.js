@@ -45,7 +45,7 @@ class AddTripForm extends Component {
   render() {
     return (
       <div className="add-trip-form-container">
-        <form>
+        <form onSubmit={this.addNewTrip}>
           <div className="trip-types">
             <label className="main-label">Trip Type: </label>
             <input
@@ -116,15 +116,13 @@ class AddTripForm extends Component {
                 onChange={this.handleChange}
               />
             </div>
-
-            {/* <input type="text" name="img_url" value={this.state.img_url} onChange={this.handleChange} /> */}
           </div>
 
           <div className="button-container">
             <button className="button cancel" onClick={this.cancelAction}>
               Cancel
             </button>
-            <button className="button add" onClick={this.addNewTrip}>
+            <button className="button add" type="submit">
               Add Trip
             </button>
           </div>

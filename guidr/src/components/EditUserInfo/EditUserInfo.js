@@ -26,9 +26,13 @@ class EditUserInfo extends Component {
   };
   render() {
     return (
-      <div className="card edit-profile">
+      <form
+        className="card edit-profile"
+        onSubmit={() => this.props.saveUpdates(this.state)}
+      >
         <label>Name: </label>
         <input
+          required
           type="text"
           name="name"
           value={this.state.name}
@@ -36,6 +40,7 @@ class EditUserInfo extends Component {
         />
         <label>Title: </label>
         <input
+          required
           type="text"
           name="title"
           value={this.state.title}
@@ -43,6 +48,7 @@ class EditUserInfo extends Component {
         />
         <label>Career Length: </label>
         <input
+          required
           type="text"
           name="careerLength"
           value={this.state.careerLength}
@@ -50,6 +56,7 @@ class EditUserInfo extends Component {
         />
         <label>Tagline: </label>
         <textarea
+          required
           type="text"
           name="tagline"
           value={this.state.tagline}
@@ -59,14 +66,11 @@ class EditUserInfo extends Component {
           <button className="cancel" onClick={this.props.cancelAction}>
             Cancel
           </button>
-          <button
-            className="save"
-            onClick={() => this.props.saveUpdates(this.state)}
-          >
+          <button className="save" type="submit">
             Save Updates
           </button>
         </div>
-      </div>
+      </form>
     );
   }
 }
