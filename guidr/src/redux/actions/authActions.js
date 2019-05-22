@@ -5,6 +5,7 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const CLEAR_LOGIN_ERROR = "CLEAR_LOGIN_ERROR";
 
 export const FETCHING_USER_INFO = "FETCHING_USER_INFO";
 export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
@@ -13,6 +14,8 @@ export const UPDATING_USER = "UPDATING_USER";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
 
 export const LOGOUT_USER = "LOGOUT_USER";
+
+export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const registerNewUser = state => dispatch => {
   dispatch({ type: REGISTERING_NEW_USER });
@@ -45,7 +48,13 @@ export const loginUser = state => dispatch => {
     })
     .catch(err => {
       console.log(err);
+      dispatch({ type: LOGIN_ERROR });
     });
+};
+export const clearLoginError = () => dispatch => {
+  dispatch({
+    type: CLEAR_LOGIN_ERROR
+  });
 };
 export const getUserInfo = id => dispatch => {
   const token = localStorage.getItem("loginToken");

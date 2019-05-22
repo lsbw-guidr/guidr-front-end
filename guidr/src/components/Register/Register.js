@@ -3,19 +3,25 @@ import { Link } from "react-router-dom";
 import "./_register.scss";
 
 import { connect } from "react-redux";
-
-import { registerNewUser } from "../../redux/actions/authActions";
+import { LoginLoading } from "../Loading/Loading";
+import { registerNewUser, getUserInfo } from "../../redux/actions/authActions";
 class Register extends Component {
   state = {
     name: "",
     username: "",
     age: 0,
     careerLength: "",
-    password: ""
+    password: "",
+    title: "",
+    tagline: ""
   };
   componentWillReceiveProps(newProps) {
-    if (newProps.loggedInUser !== this.props.loggedInUser) {
-      this.props.history.push(`/profile/my-trips`);
+    const id = localStorage.getItem("userId");
+    if (newProps.isUserLoggedIn !== this.props.isUserLoggedIn) {
+      this.props.getUserInfo(id);
+    }
+    if (newProps.userInfo !== this.props.userInfo) {
+      this.props.history.push("/profile/my-trips");
     }
   }
   register = e => {
@@ -58,6 +64,20 @@ class Register extends Component {
             value={this.state.careerLength}
             onChange={this.handleChanges}
           />
+          <label>What type of guide are you?</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChanges}
+          />
+          <label>Give a short description of yourself:</label>
+          <input
+            type="text"
+            name="tagline"
+            value={this.state.tagline}
+            onChange={this.handleChanges}
+          />
           <label>Pick a username:</label>
           <input
             type="text"
@@ -74,9 +94,15 @@ class Register extends Component {
             value={this.state.password}
             onChange={this.handleChanges}
           />
-          <button className="button register" onClick={this.register}>
-            Register
-          </button>
+          {this.props.loading ? (
+            <button className="button register">
+              <LoginLoading />
+            </button>
+          ) : (
+            <button className="button register" onClick={this.register}>
+              Register
+            </button>
+          )}
           <p>
             Already have an account? <Link to={"/login"}>Log In</Link>
           </p>
@@ -87,11 +113,13 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => ({
+  loading: state.authReducer.loading,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
-  loggedInUser: state.authReducer.loggedInUser
+  loggedInUser: state.authReducer.loggedInUser,
+  userInfo: state.authReducer.userInfo
 });
 
 export default connect(
   mapStateToProps,
-  { registerNewUser }
+  { registerNewUser, getUserInfo }
 )(Register);

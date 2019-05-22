@@ -5,6 +5,7 @@ import { loginUser, getUserInfo } from "../../redux/actions/authActions";
 import "./_login.scss";
 
 import { LoginLoading } from "../Loading/Loading";
+import LoginError from "../LoginError/LoginError";
 class LogIn extends Component {
   state = {
     username: "",
@@ -31,56 +32,61 @@ class LogIn extends Component {
     this.props.loginUser(this.state);
   };
   render() {
-    return (
-      <div className="login">
-        <div className="login-container">
-          <div className="header-container">
-            <div className="logo-container">
-              <img alt="guidr" src={require("../../assets/logo_white.png")} />
+    if (this.props.loginError === true) {
+      return <LoginError />;
+    } else {
+      return (
+        <div className="login">
+          <div className="login-container">
+            <div className="header-container">
+              <div className="logo-container">
+                <img alt="guidr" src={require("../../assets/logo_white.png")} />
+              </div>
             </div>
-          </div>
-          <form onSubmit={this.logIn}>
-            <input
-              required
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.handleChanges}
-            />
+            <form onSubmit={this.logIn}>
+              <input
+                required
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChanges}
+              />
 
-            <input
-              required
-              type="text"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChanges}
-            />
-            {this.props.loading ? (
-              <button className="button register">
-                <LoginLoading />
-              </button>
-            ) : (
-              <button type="submit" className="button register">
-                Log In
-              </button>
-            )}
-            <p>
-              Don't have an account yet?{" "}
-              <span>
-                <Link to={"/register"}>Sign Up</Link>
-              </span>
-            </p>
-          </form>
+              <input
+                required
+                type="text"
+                name="password"
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.handleChanges}
+              />
+              {this.props.loading ? (
+                <button className="button register">
+                  <LoginLoading />
+                </button>
+              ) : (
+                <button type="submit" className="button register">
+                  Log In
+                </button>
+              )}
+              <p>
+                Don't have an account yet?{" "}
+                <span>
+                  <Link to={"/register"}>Sign Up</Link>
+                </span>
+              </p>
+            </form>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 const mapStateToProps = state => ({
   loading: state.authReducer.loading,
   isUserLoggedIn: state.authReducer.isUserLoggedIn,
+  loginError: state.authReducer.loginError,
   loggedInUser: state.authReducer.loggedInUser,
   tripList: state.tripReducer.tripList,
   userInfo: state.authReducer.userInfo
