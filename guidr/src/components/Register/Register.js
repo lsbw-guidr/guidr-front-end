@@ -41,9 +41,10 @@ class Register extends Component {
         <div className="logo-container">
           <img alt="guidr" src={require("../../assets/logo_white.png")} />
         </div>
-        <form>
+        <form onSubmit={this.register}>
           <label>What's your name?</label>
           <input
+            required
             type="text"
             name="name"
             placeholder="Name"
@@ -52,6 +53,7 @@ class Register extends Component {
           />
           <label>How old are you?</label>
           <input
+            required
             type="number"
             name="age"
             value={this.state.age}
@@ -59,6 +61,7 @@ class Register extends Component {
           />
           <label>How long have you been a guide?</label>
           <input
+            required
             type="text"
             name="careerLength"
             value={this.state.careerLength}
@@ -66,6 +69,7 @@ class Register extends Component {
           />
           <label>What type of guide are you?</label>
           <input
+            required
             type="text"
             name="title"
             value={this.state.title}
@@ -73,6 +77,7 @@ class Register extends Component {
           />
           <label>Give a short description of yourself:</label>
           <input
+            required
             type="text"
             name="tagline"
             value={this.state.tagline}
@@ -80,6 +85,7 @@ class Register extends Component {
           />
           <label>Pick a username:</label>
           <input
+            required
             type="text"
             name="username"
             placeholder="Choose a username"
@@ -88,7 +94,8 @@ class Register extends Component {
           />
           <label>Choose a strong password:</label>
           <input
-            type="text"
+            required
+            type="password"
             name="password"
             placeholder="Choose a password"
             value={this.state.password}
@@ -99,7 +106,7 @@ class Register extends Component {
               <LoginLoading />
             </button>
           ) : (
-            <button className="button register" onClick={this.register}>
+            <button className="button register" type="submit">
               Register
             </button>
           )}
