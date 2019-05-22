@@ -72,7 +72,10 @@ class TripPage extends Component {
       return (
         <div>
           <UserNavBar />
-          <form className="update-trip-form-container">
+          <form
+            className="update-trip-form-container"
+            onSubmit={this.saveUpdates}
+          >
             <div className="trip-types">
               <label className="main-label">Trip Type:</label>
               <input
@@ -98,6 +101,7 @@ class TripPage extends Component {
             <div className="edit-trip-main-inputs">
               <label>Trip title: </label>
               <input
+                required
                 type="text"
                 name="title"
                 value={this.state.trip.title}
@@ -105,13 +109,15 @@ class TripPage extends Component {
               />
               <label>Trip duration (in hours):</label>
               <input
-                type="text"
+                required
+                type="number"
                 name="duration"
                 value={this.state.trip.duration}
                 onChange={this.handleChanges}
               />
               <label>Give a brief description of your trip: </label>
               <textarea
+                required
                 type="text"
                 name="description"
                 value={this.state.trip.description}
@@ -123,7 +129,7 @@ class TripPage extends Component {
               <button className="button cancel" onClick={this.cancelUpdate}>
                 Cancel
               </button>
-              <button className="button update" onClick={this.saveUpdates}>
+              <button className="button update" type="submit">
                 Save Updates
               </button>
             </div>
