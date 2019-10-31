@@ -1,0 +1,100 @@
+@import "../../Main-Styles/Variables.scss";
+.card {
+  display: flex;
+  width: 800px;
+  margin: auto;
+  margin-bottom: 15px;
+  padding: 30px;
+  font-family: $text-font;
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  @media (max-width: $mobile) {
+    padding: 10px;
+    padding-top: 20px;
+  }
+  .profile-info {
+    width: 70%;
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+  }
+  button {
+    margin-left: 172px;
+    background-color: $update-button;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    height: 50px;
+    width: 50px;
+    padding: 7px;
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+}
+.edit-profile {
+  flex-direction: column;
+  width: 50%;
+  @media (max-width: $mobile) {
+    width: 95%;
+  }
+  .main-label {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  label {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+  input,
+  textarea {
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    font-family: $text-font;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    margin: auto;
+    @media (max-width: $mobile) {
+      flex-direction: column-reverse;
+      align-items: center;
+      width: 90%;
+    }
+    button {
+      width: 100px;
+      text-align: center;
+      margin: 0;
+      padding: 0 20px;
+      @media (max-width: $mobile) {
+        margin-bottom: 5px;
+        width: 100%;
+        height: 40px;
+      }
+    }
+    .cancel {
+      background-color: $orange-button;
+      border: 2px solid $orange-button;
+    }
+    .save {
+      border: 2px solid $blue-button;
+      background-color: $blue-button;
+    }
+  }
+}

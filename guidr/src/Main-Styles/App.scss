@@ -1,20 +1,20 @@
 // IMPORT THE RESET
-@import './Reset.scss';
+@import "./Reset.scss";
 // IMPORT THE 62.5% AND BORDER BOX
-@import './Sizing.scss';
+@import "./Sizing.scss";
 // IMPORT VARIABLES
-@import './Variables.scss';
+@import "./Variables.scss";
 // IMPORT MIXINS
 
-
-
-
-@import '../components/WelcomePage/welcome-page';
-@import '../components/Register/register';
-@import '../components/LogIn/login';
-@import '../components/UserProfile/user-profile';
-@import '../components/TripList/triplist';
-@import '../components/TripWidget/trip-widget';
-@import '../components/TripPage/trip-page';
-@import '../components/AddTripForm/add-trip-form';
-@import '../components/UserNavBar/user-nav-bar';
+@import "../components/WelcomePage/welcome-page";
+@import "../components/Register/register";
+@import "../components/LogIn/login";
+@import "../components/LoginError/login-error";
+@import "../components/Loading/loading";
+@import "../components/UserProfile/user-profile";
+@import "../components/EditUserInfo/edit_user_info";
+@import "../components/TripList/triplist";
+@import "../components/TripWidget/trip-widget";
+@import "../components/TripPage/trip-page";
+@import "../components/AddTripForm/add-trip-form";
+@import "../components/UserNavBar/user-nav-bar";
